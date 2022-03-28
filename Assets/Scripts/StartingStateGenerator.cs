@@ -5,11 +5,11 @@ using UnityEngine;
 public class StartingStateGenerator : MonoBehaviour
 {
 
-    public int size = 400;
-    public float chanceOfCellOn = 0.5F;
+    public static int size = 400;
+    public static float chanceOfCellOn = 0.5F;
 
     //returns a starting state array based on size with a certain chance of each cell being on.
-    public int[] getStartingStateGenerator(){
+    public static int[] getStartingStateGenerator(){
         int[] startingState = new int[size];    
 
             for(int i =0; i<size; i++)
@@ -21,16 +21,18 @@ public class StartingStateGenerator : MonoBehaviour
                 }
             
             }
+       
+     //   Debug.Log(string.Join(", ", startingState));
+
 
         return startingState;
         }
 
     //generates a random number between 0..1(inclusive), if the number is below RandomChanceOn, returns true
-    private bool randomChanceOn()
+    private static bool randomChanceOn()
     {
        
         float rndNbr = Random.value;
-        Debug.Log(rndNbr);
         
         if (rndNbr<=chanceOfCellOn)
         {
@@ -41,6 +43,7 @@ public class StartingStateGenerator : MonoBehaviour
     }
 
 
+    /*
     public void Start()
     {
         for(int i =0; i<20; i++)
@@ -49,5 +52,6 @@ public class StartingStateGenerator : MonoBehaviour
         }
     }
 
+    */
 
 }
