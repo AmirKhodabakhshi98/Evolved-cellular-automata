@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StartingStateGenerator : MonoBehaviour
+public static class StartingStateGenerator 
 {
 
     public static int size = 400;
