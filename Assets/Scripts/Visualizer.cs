@@ -7,14 +7,13 @@ public class Visualizer : MonoBehaviour
 {
     public int width;
     public int height;
-
-    int[,] map;
     
-    public CellularAutomata cellularAutomata;
     int[] grid;
+    int[,] grid2d;
 
-   
-    private void Start()
+
+
+    void Start()
     {
         grid = StartingStateGenerator.getStartingStateGenerator();
         generateMap();
@@ -22,7 +21,8 @@ public class Visualizer : MonoBehaviour
 
     private void generateMap()
     {
-        map = new int[width, height];
+        grid2d = new int[width, height];
+        
     }
 
     public int[,] convertArrayTo2D(int []array)
@@ -42,16 +42,18 @@ public class Visualizer : MonoBehaviour
         } return Array2d;
     }
 
-    void drawCells()
+    void OnDrawGizmos()
     {
-        if (grid != null)
-        {
+        if (grid2d != null)
+        {   grid2d = convertArrayTo2D(grid);
             for(int x = 0; x<width; x++)
             {
                 for(int y = 0; y<height; y++)
                 {
-                    int grid2d = 
-                    Gizmos.color = (grid[])
+                    
+                    Gizmos.color = (grid2d[x, y] == 1) ? Color.black : Color.red;
+                    Vector3 position = new Vector3(-width / 2 + x + .5f, -height / 2 + y + .5f, 0);
+                    Gizmos.DrawCube(position, Vector3.one);
                 }
             }
         }

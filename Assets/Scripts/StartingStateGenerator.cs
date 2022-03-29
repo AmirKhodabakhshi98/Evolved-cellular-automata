@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class StartingStateGenerator 
 {
-
+     
     public static int size = 400;
     public static float chanceOfCellOn = 0.5F;
 
