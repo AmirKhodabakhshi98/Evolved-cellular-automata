@@ -8,7 +8,7 @@ public class CellularAutomata : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GenerateRules();
+        GetRandomRules();
     }
 
     // Update is called once per frame
@@ -17,7 +17,8 @@ public class CellularAutomata : MonoBehaviour
         
     }
 
-    static int[] GenerateRules()
+    //returns a random ruleset
+    static int[] GetRandomRules()
     {
         int[] rules = new int[ruleSize];
 
@@ -32,11 +33,54 @@ public class CellularAutomata : MonoBehaviour
     }
 
 
-     //checks Moore neighbours of a cell and compares with rule array, returns true if cell state should be on.
-     static bool ApplyRuleOnCenterCell(int[] grid, int centerPosition, int[] rules)
+
+
+    static int[] applyRules(int[] grid, int[] rules, int iterations)
     {
+        int[] temp = new int[grid.Length];
+
+         for(int itr=0; itr<iterations; itr++) { 
+            for(int i=0; i<grid.Length; i++)
+            {
+                if (shouldCellBeOn(grid, i, rules))
+                {
+                    temp[i] = 1;
+                }
+                else { 
+                    temp[i] = 0; }
+            }
+            grid = temp;
+        }
+        return grid;
+
+    }
 
 
+
+
+
+
+     //checks Moore neighbours of a cell and compares with rule array, returns true if cell state should be on.
+     static bool shouldCellBeOn(int[] grid, int centerPosition, int[] rules)
+    {
+        int[] neighbours = getNeighbours(grid, centerPosition);
+
+        int value = 0;
+
+
+        for(int i = 0; i<neighbours.Length; i++)
+        {
+            if (neighbours[i] == 1)
+            {
+                value += (int)Mathf.Pow(2, 8-i);
+            }
+
+        }
+
+        if(rules[value] == 1)
+        {
+            return true;
+        }
 
         return false;
 
@@ -82,6 +126,6 @@ public class CellularAutomata : MonoBehaviour
 
     }
 
-    
+
 
 }
