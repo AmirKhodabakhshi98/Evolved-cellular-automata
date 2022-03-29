@@ -34,8 +34,8 @@ public class CellularAutomata : MonoBehaviour
 
 
 
-
-    static int[] applyRules(int[] grid, int[] rules, int iterations)
+    //Applies CA rules on the given grid for specified number of iterations. 
+    static int[] applyRulesForIterations(int[] grid, int[] rules, int iterations)
     {
         int[] temp = new int[grid.Length];
 
@@ -51,8 +51,8 @@ public class CellularAutomata : MonoBehaviour
             }
             grid = temp;
         }
-        return grid;
 
+        return grid;
     }
 
 

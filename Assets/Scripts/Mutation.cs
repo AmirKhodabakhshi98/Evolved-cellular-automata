@@ -2,16 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GeneticAlgorithm : MonoBehaviour
+public class Mutation : MonoBehaviour
 {
-
-    public int generations;
-    public int populationSize;
-    public int caIterations;
-    public float mutationChance;
-    public float crossoverChance;
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -23,8 +15,4 @@ public class GeneticAlgorithm : MonoBehaviour
     {
         
     }
-
-
-
-
 }
