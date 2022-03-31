@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class TournamentSelection : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+
+
+    static void PerformTournamentSelection()
     {
-        
+
+
+
+
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

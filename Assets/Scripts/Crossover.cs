@@ -22,9 +22,8 @@ public class Crossover : MonoBehaviour
         int length = candidate1.Length;
 
 
-        int crossoverPoint = Random.Range(1, length - 1); //end range is exclusive. Crossoverpoint cant be 0 or at last bit, because then children are copies of parents
+        int crossoverPoint = Random.Range(1, length);  //if crossoverpoint is 0 then children will just be copies of parents.
 
-        //   int crossoverPoint2 = Random.Range(0, length); 
 
 
         int[] child1 = candidate1;
