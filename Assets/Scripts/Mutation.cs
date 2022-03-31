@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class Mutation : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private float mutationRate;
+      
 
-    // Update is called once per frame
-    void Update()
+    void performMutation()
     {
-        
+     //  mutationRate = 1/(GeneticAlgorithm.RuleArray.length);
     }
 }
