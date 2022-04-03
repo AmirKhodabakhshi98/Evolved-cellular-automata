@@ -2,20 +2,63 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CellularAutomata : MonoBehaviour
+public class CellularAutomata : System.IComparable<CellularAutomata>
 {
-    public static int ruleSize = 512;
+    public readonly static int ruleSize = 512;
+    private float fitnessScore = 0f;
+    private int[] rules;
+
     // Start is called before the first frame update
     void Start()
     {
-        GetRandomRules();
+     //   GetRandomRules();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public CellularAutomata(){
+        this.rules = GetRandomRules();
     }
+
+
+    public int[] getRules()
+    {
+        return rules;
+    }
+
+    //changes rule
+    public void flipRuleAtPos(int pos)
+    {
+        if (rules[pos] == 1)
+        {
+            rules[pos] = 0;
+        }
+        else rules[pos] = 1;
+    }
+
+    public void setFitness(float score)
+    {
+        fitnessScore = score;
+    }
+
+    public void addScore(float score)
+    {
+        fitnessScore += score;
+    }
+
+    public int CompareTo(CellularAutomata other)
+    {
+        if (this.fitnessScore > other.fitnessScore)
+        {
+            return 1;
+        }
+        if (this.fitnessScore < other.fitnessScore)
+        {
+            return -1;
+        }
+
+        return 0;
+
+    }
+
 
     //returns a random ruleset
     static int[] GetRandomRules()

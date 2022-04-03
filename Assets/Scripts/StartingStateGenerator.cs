@@ -9,7 +9,7 @@ public static class StartingStateGenerator
     public static float chanceOfCellOn = 0.5F;
 
     //returns a starting state array based on size with a certain chance of each cell being on.
-    public static int[] getStartingStateGenerator(){
+    public static int[] getStartingState(){
         int[] startingState = new int[size];    
 
             for(int i =0; i<size; i++)

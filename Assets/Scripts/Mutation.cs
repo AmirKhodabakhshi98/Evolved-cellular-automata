@@ -5,23 +5,31 @@ using UnityEngine;
 
 public class Mutation : MonoBehaviour
 {
-    private float mutationRate;
-    //private Random r;
+    private static float mutationRate = 1f/512f;
 
-      
 
-    void mutate()
+
+    //runs through entire population and mutates based on a certain probability
+    //startAt variable to skip first elite members 
+    static void Mutate(CellularAutomata[] pop, int startAt)
     {
       
-        float randomValue = Random.Range(0,1);
+    
 
-        //  mutationRate = 1/(GeneticAlgorithm.RuleArray.length);
-        // the bchance will be 1/512
-        for (int i = 0; i <= GeneticAlgorithm.RuleArray.length; i++)
+        //loop entire population
+        for (int i = startAt; i < pop.Length; i++)
         {
-            if (randomValue <= mutationRate)
+            //loop through each rule array
+            for(int j=0; j<CellularAutomata.ruleSize; j++)
             {
-                //change cell at [i]
+                float randomValue = Random.Range(0f, 1f);
+               
+                // the chance will be 1/512
+                if (randomValue <= mutationRate)
+                {
+
+                    pop[i].flipRuleAtPos(j);
+                }
             }
         }
     }

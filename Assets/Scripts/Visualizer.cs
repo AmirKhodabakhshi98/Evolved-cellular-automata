@@ -15,7 +15,7 @@ public class Visualizer : MonoBehaviour
 
     void Start()
     {
-        grid = StartingStateGenerator.getStartingStateGenerator();
+        grid = StartingStateGenerator.getStartingState();
         generateMap();
     }
 
