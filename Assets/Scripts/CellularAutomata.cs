@@ -39,6 +39,11 @@ public class CellularAutomata : System.IComparable<CellularAutomata>
         fitnessScore = score;
     }
 
+    public float getFitness()
+    {
+        return fitnessScore;
+    }
+
     public void addScore(float score)
     {
         fitnessScore += score;
