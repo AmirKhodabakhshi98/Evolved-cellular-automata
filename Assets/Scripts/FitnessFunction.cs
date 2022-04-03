@@ -7,8 +7,7 @@ public class FitnessFunction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(Random.Range(0f, 1f));
-        Debug.Log(Random.value);
+
     }
 
     // Update is called once per frame

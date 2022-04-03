@@ -12,6 +12,7 @@ public class CellularAutomata : System.IComparable<CellularAutomata>
     void Start()
     {
      //   GetRandomRules();
+
     }
 
     public CellularAutomata(){
@@ -31,7 +32,7 @@ public class CellularAutomata : System.IComparable<CellularAutomata>
         {
             rules[pos] = 0;
         }
-        else rules[pos] = 1;
+        else { rules[pos] = 1; }
     }
 
     public void setFitness(float score)

@@ -27,7 +27,6 @@ public class Mutation : MonoBehaviour
                 // the chance will be 1/512
                 if (randomValue <= mutationRate)
                 {
-
                     pop[i].flipRuleAtPos(j);
                 }
             }
