@@ -10,7 +10,7 @@ public class GeneticAlgorithm : MonoBehaviour
     public int populationSize = 10;
     public int caIterations;
     public float mutationChance;
-    public float crossoverChance;
+    public float crossoverChance = 0.6f;
     public int elitismSize = 5;
 
 
@@ -55,10 +55,6 @@ public class GeneticAlgorithm : MonoBehaviour
     {
         CellularAutomata[] newPop = new CellularAutomata[oldPop.Length];
         newPop = Elitism(oldPop, newPop);
-
-
-
-
 
         return newPop;
     }
