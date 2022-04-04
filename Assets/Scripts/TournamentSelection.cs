@@ -8,7 +8,7 @@ public class TournamentSelection : MonoBehaviour
     
    
 
-    static CellularAutomata PerformTournamentSelection(CellularAutomata[] population, int tournamentSize)
+    public static CellularAutomata PerformTournamentSelection(CellularAutomata[] population, int tournamentSize)
     {
               
         CellularAutomata[] tournamentArray = new CellularAutomata[tournamentSize]; // creates an array of candidates of size tournamentSize 

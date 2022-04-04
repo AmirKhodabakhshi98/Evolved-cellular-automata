@@ -20,30 +20,35 @@ public class FitnessFunction : MonoBehaviour
     {
         for(int i=0; i<population.Length; i++)
         {
-            float score = PercentageOn(population[i].getRules());
+            float score = 0; 
+        //     score += PercentageOn(population[i].getRules());
+
+
             population[i].setFitness(score);//ändra
         }
     }
 
 
-
-    static float PercentageOn(int[] level)
+    static float PercentageOn(int[][] level)
     {
         int on = 0;
         for(int i=0; i < level.Length; i++)
         {
-            if(level[i]== 1)
+            for(int j=0; j<level.Length; j++)
             {
-                on++;
+                if (level[i][j] == 1)
+                {
+                    on++;
+                }
             }
+            
         }
 
         float percentage = ((float)on) / ((float)level.Length);
 
         return percentage;
 
-
-   
-
     }
+
+    
 }

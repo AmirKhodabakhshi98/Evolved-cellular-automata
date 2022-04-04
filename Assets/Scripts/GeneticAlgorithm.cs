@@ -7,11 +7,12 @@ public class GeneticAlgorithm : MonoBehaviour
 {
 
     public int maxGenerations = 100;
-    public int populationSize = 10;
+    public int populationSize = 11;
     public int caIterations;
-    public float mutationChance;
-    public float crossoverChance = 0.6f;
+    public float mutationProbability;
+    public float crossoverProbability = 0.6f;
     public int elitismSize = 5;
+    public int tournamentSize = 5;
 
 
     // Start is called before the first frame update
@@ -30,15 +31,16 @@ public class GeneticAlgorithm : MonoBehaviour
     {
         int generations = 0;
 
-        CellularAutomata[] population = generateLevels();
+        CellularAutomata[] population = GenerateLevels();
+        int[][] startingStateCollection = GenerateStartingStates();
+
 
         while (generations < maxGenerations)
         {
         
             FitnessFunction.scoreLevels(population);
             Array.Sort(population);
-            population = GenerateNewPop(population);
-            
+            population = GenerateNewPop(population);   
             generations++;
         }
         //generate levels
@@ -50,11 +52,29 @@ public class GeneticAlgorithm : MonoBehaviour
         
     }
 
+    int[][] GenerateStartingStates()
+    {
+
+        return null;
+    }
 
     CellularAutomata[] GenerateNewPop(CellularAutomata[] oldPop)
     {
         CellularAutomata[] newPop = new CellularAutomata[oldPop.Length];
         newPop = Elitism(oldPop, newPop);
+
+
+        for(int i=elitismSize; i<populationSize; i += 2)
+        {
+            CellularAutomata candidate1 = TournamentSelection.PerformTournamentSelection(oldPop,tournamentSize);
+            CellularAutomata candidate2 = TournamentSelection.PerformTournamentSelection(oldPop, tournamentSize);
+           // (candidate1, candidate2) = Crossover.SinglePointCrossover(candidate1,candidate2,crossoverProbability);
+            candidate1 = Mutation.Mutate(candidate1);
+            candidate2 = Mutation.Mutate(candidate2);
+            newPop[i] = candidate1;
+            newPop[i+1] = candidate2;
+
+        }
 
         return newPop;
     }
@@ -73,7 +93,7 @@ public class GeneticAlgorithm : MonoBehaviour
     }
 
 
-     CellularAutomata[] generateLevels()
+     CellularAutomata[] GenerateLevels()
     {
         CellularAutomata[] pop = new CellularAutomata[populationSize];
 

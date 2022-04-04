@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CellularAutomata : System.IComparable<CellularAutomata>
 {
-    public readonly static int ruleSize = 512;
+    public int ruleSize;
     private float fitnessScore = 0f;
     private int[] rules;
 
@@ -17,6 +17,12 @@ public class CellularAutomata : System.IComparable<CellularAutomata>
 
     public CellularAutomata(){
         this.rules = GetRandomRules();
+        ruleSize = 512;
+    }
+
+    public int getRuleSize()
+    {
+        return this.ruleSize;
     }
 
 
@@ -67,7 +73,7 @@ public class CellularAutomata : System.IComparable<CellularAutomata>
 
 
     //returns a random ruleset
-    static int[] GetRandomRules()
+     int[] GetRandomRules()
     {
         int[] rules = new int[ruleSize];
 
@@ -84,7 +90,7 @@ public class CellularAutomata : System.IComparable<CellularAutomata>
 
 
     //Applies CA rules on the given grid for specified number of iterations. 
-    static int[] applyRulesForIterations(int[] grid, int[] rules, int iterations)
+    int[] applyRulesForIterations(int[] grid, int[] rules, int iterations)
     {
         int[] temp = new int[grid.Length];
 
@@ -110,7 +116,7 @@ public class CellularAutomata : System.IComparable<CellularAutomata>
 
 
      //checks Moore neighbours of a cell and compares with rule array, returns true if cell state should be on.
-     static bool shouldCellBeOn(int[] grid, int centerPosition, int[] rules)
+     bool shouldCellBeOn(int[] grid, int centerPosition, int[] rules)
     {
         int[] neighbours = getNeighbours(grid, centerPosition);
 
@@ -136,7 +142,7 @@ public class CellularAutomata : System.IComparable<CellularAutomata>
     }
 
     //returns an array of the Moore neighbour values of a cell
-    private static int[] getNeighbours(int[] grid, int centerPosition)
+    private int[] getNeighbours(int[] grid, int centerPosition)
     {
         int size = grid.Length;
         int sideLength = (int)Mathf.Sqrt(size);

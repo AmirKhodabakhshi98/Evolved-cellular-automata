@@ -44,15 +44,5 @@ public static class StartingStateGenerator
     }
 
 
-    /*
-    public void Start()
-    {
-        for(int i =0; i<20; i++)
-        {
-            getStartingStateGenerator();
-        }
-    }
-
-    */
 
 }

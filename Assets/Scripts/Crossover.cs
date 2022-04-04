@@ -8,7 +8,7 @@ public class Crossover : MonoBehaviour
 
 
     //takes 2 candidates and performs onepoint crossover. Returns unchanged candidates if random roll fails.
-    static (int[] child1, int[] child2) singlePointCrossover(int[] candidate1, int[]candidate2, float crossoverProbability)
+    public static (int[] child1, int[] child2) SinglePointCrossover(int[] candidate1, int[]candidate2, float crossoverProbability)
     {
         float rndValue = Random.value; //kolla så decimalr o sånt nt ställer till d vid slumpgenerering
 
