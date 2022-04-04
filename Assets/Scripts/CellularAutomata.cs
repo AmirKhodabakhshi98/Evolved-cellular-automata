@@ -31,6 +31,11 @@ public class CellularAutomata : System.IComparable<CellularAutomata>
         return rules;
     }
 
+    public void setRules(int[] newRules)
+    {
+        this.rules = newRules;
+    }
+
     //changes rule
     public void flipRuleAtPos(int pos)
     {

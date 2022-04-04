@@ -60,17 +60,33 @@ public class GeneticAlgorithm : MonoBehaviour
 
     CellularAutomata[] GenerateNewPop(CellularAutomata[] oldPop)
     {
+        //instantiate new empty pop
         CellularAutomata[] newPop = new CellularAutomata[oldPop.Length];
+        
+        //elitist selection from oldpop to newpop
         newPop = Elitism(oldPop, newPop);
 
-
+        //fill remaining places
         for(int i=elitismSize; i<populationSize; i += 2)
         {
+            //select 2 new candidates based on 2 tournament selection runs
             CellularAutomata candidate1 = TournamentSelection.PerformTournamentSelection(oldPop,tournamentSize);
             CellularAutomata candidate2 = TournamentSelection.PerformTournamentSelection(oldPop, tournamentSize);
-           // (candidate1, candidate2) = Crossover.SinglePointCrossover(candidate1,candidate2,crossoverProbability);
+            
+            //get their rules and run crossover method on them
+            int[] rules1 = candidate1.getRules();
+            int[] rules2 = candidate2.getRules();
+            (rules1, rules2) = Crossover.SinglePointCrossover(rules1,rules2,crossoverProbability);
+            
+            //set the rules resulting from the crossover method to the candidates
+            candidate1.setRules(rules1);
+            candidate2.setRules(rules2);
+            
+            //perform mutation on them
             candidate1 = Mutation.Mutate(candidate1);
             candidate2 = Mutation.Mutate(candidate2);
+            
+            //add to new pop
             newPop[i] = candidate1;
             newPop[i+1] = candidate2;
 
