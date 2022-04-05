@@ -1,17 +1,19 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Text;
 using UnityEngine;
 
 public class GeneticAlgorithm : MonoBehaviour
 {
 
-    public int maxGenerations = 3;
-    public int populationSize = 11;
+    public int maxGenerations = 1;
+    public int populationSize = 30;
     public int cellularAutomataIterations = 5;
     public float mutationProbability;
     public float crossoverProbability = 0.6f;
-    public int elitismSize = 5;
+    public int elitismSize = 10;
     public int tournamentSize = 5;
     public int startingStatesAmount = 10;
 
@@ -28,14 +30,19 @@ public class GeneticAlgorithm : MonoBehaviour
         
     }
 
-    void test()
+    public GeneticAlgorithm()
+    {
+
+    }
+
+    public CellularAutomata[] test()
     {
         int generations = 0;
 
         CellularAutomata[] population = GenerateLevels();
         int[][] startingStateCollection = StartingStateGenerator.getStartingStateCollection(startingStatesAmount);
 
-
+        StringBuilder sb = new StringBuilder();
         while (generations < maxGenerations)
         {
             population = GenerateCellularAutomataLevels(population, startingStateCollection);   
@@ -43,19 +50,24 @@ public class GeneticAlgorithm : MonoBehaviour
             Array.Sort(population);
             population = GenerateNewPop(population);   
             generations++;
+         
+            sb.Append(population[0].getFitness() + "\n");
         }
 
         int[][] topLevel = population[0].getLevels();
 
         new Visualizer(topLevel[0]);
 
-        String str = "";
         for(int i=0; i < 400; i++)
         {
-            str += topLevel[0][i] + ", ";
+            sb.Append (topLevel[0][i] + ", ");
             
         }
-        Debug.Log(str);
+
+        string path = @"E:\backup ssd\downloads\MAU HT 20\PCG kandidat\output\output.txt";
+        File.WriteAllText(path, sb.ToString());
+
+        return population;
 
     }
 

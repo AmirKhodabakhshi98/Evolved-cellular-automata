@@ -15,8 +15,23 @@ public class Visualizer : MonoBehaviour
 
     void Start()
     {
-      //  grid = StartingStateGenerator.getStartingState();
-     //   generateMap();
+    //    grid = StartingStateGenerator.getStartingState();
+        GeneticAlgorithm ga = new GeneticAlgorithm();
+        CellularAutomata[] ca = ga.test();
+        int[][] lvls = ca[0].getLevels();
+        
+
+        
+        grid = lvls[0];
+
+
+        generateMap();
+    }
+
+    private void Update()
+    {
+        generateMap();
+
     }
 
     private void generateMap()
@@ -27,8 +42,8 @@ public class Visualizer : MonoBehaviour
 
     public Visualizer(int[] grid)
     {
-        this.grid = grid;
-        generateMap();
+     //   this.grid = grid;
+      //  generateMap();
 
     }
 

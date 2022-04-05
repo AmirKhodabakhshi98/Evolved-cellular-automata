@@ -54,7 +54,7 @@ public class FitnessFunction : MonoBehaviour
     static float PercentageOn(int[][] levels)
     {
         float percentageOnTotal = 0f;
-
+        float totalOn = 0;
         for(int i=0; i<levels.Length; i++)
         {
             int on = 0;
@@ -64,6 +64,7 @@ public class FitnessFunction : MonoBehaviour
                 if (levels[i][j] == 1)
                 {
                     on++;
+                    totalOn++;
                 }
             }
 
@@ -72,9 +73,10 @@ public class FitnessFunction : MonoBehaviour
         }
 
 
-        float percentageOnAverage = percentageOnTotal / ((float) levels.Length);
+        // float percentageOnAverage = percentageOnTotal / ((float) levels.Length);
 
-        return percentageOnAverage;
+        //  return percentageOnAverage;
+        return totalOn;
 
     }
 
