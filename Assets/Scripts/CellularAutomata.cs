@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class CellularAutomata : System.IComparable<CellularAutomata>
 {
-    public int ruleSize;
+    public int ruleSize=512;
     private float fitnessScore = 0f;
     private int[] rules;
+    private int[][] levels;
+
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +19,7 @@ public class CellularAutomata : System.IComparable<CellularAutomata>
 
     public CellularAutomata(){
         this.rules = GetRandomRules();
-        ruleSize = 512;
+        
     }
 
     public int getRuleSize()
@@ -25,6 +27,23 @@ public class CellularAutomata : System.IComparable<CellularAutomata>
         return this.ruleSize;
     }
 
+    public int[][] getLevels()
+    {
+        return levels;
+    }
+
+
+
+    //takes in starting states and runs this instances CA rules on them
+    public void setLevels(int[][] startingStates, int iterations)
+    {
+        int[][] levels = new int[startingStates.Length][];
+        for(int i=0; i<startingStates.Length; i++)
+        {
+            levels[i] = applyRulesForIterations(startingStates[i], this.rules, iterations);
+        }
+        this.levels = levels;
+    }
 
     public int[] getRules()
     {
@@ -137,6 +156,7 @@ public class CellularAutomata : System.IComparable<CellularAutomata>
 
         }
 
+        
         if(rules[value] == 1)
         {
             return true;

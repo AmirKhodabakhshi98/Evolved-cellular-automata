@@ -6,19 +6,20 @@ using UnityEngine;
 public class GeneticAlgorithm : MonoBehaviour
 {
 
-    public int maxGenerations = 100;
+    public int maxGenerations = 3;
     public int populationSize = 11;
-    public int caIterations;
+    public int cellularAutomataIterations = 5;
     public float mutationProbability;
     public float crossoverProbability = 0.6f;
     public int elitismSize = 5;
     public int tournamentSize = 5;
+    public int startingStatesAmount = 10;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        test();
     }
 
     // Update is called once per frame
@@ -32,30 +33,40 @@ public class GeneticAlgorithm : MonoBehaviour
         int generations = 0;
 
         CellularAutomata[] population = GenerateLevels();
-        int[][] startingStateCollection = GenerateStartingStates();
+        int[][] startingStateCollection = StartingStateGenerator.getStartingStateCollection(startingStatesAmount);
 
 
         while (generations < maxGenerations)
         {
-        
+            population = GenerateCellularAutomataLevels(population, startingStateCollection);   
             FitnessFunction.scoreLevels(population);
             Array.Sort(population);
             population = GenerateNewPop(population);   
             generations++;
         }
-        //generate levels
-        //fitness
-        //selection
-            //tournament
-            //crossover
-            //mutation
-        
+
+        int[][] topLevel = population[0].getLevels();
+
+        new Visualizer(topLevel[0]);
+
+        String str = "";
+        for(int i=0; i < 400; i++)
+        {
+            str += topLevel[0][i] + ", ";
+            
+        }
+        Debug.Log(str);
+
     }
 
-    int[][] GenerateStartingStates()
+    private CellularAutomata[] GenerateCellularAutomataLevels(CellularAutomata[] population, int[][] startingStateCollection)
     {
+        for(int i=0; i<population.Length; i++)
+        {
+            population[i].setLevels(startingStateCollection, cellularAutomataIterations);
+        }
 
-        return null;
+        return population;
     }
 
     CellularAutomata[] GenerateNewPop(CellularAutomata[] oldPop)

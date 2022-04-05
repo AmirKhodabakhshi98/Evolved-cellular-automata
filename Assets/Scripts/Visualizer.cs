@@ -15,14 +15,21 @@ public class Visualizer : MonoBehaviour
 
     void Start()
     {
-        grid = StartingStateGenerator.getStartingState();
-        generateMap();
+      //  grid = StartingStateGenerator.getStartingState();
+     //   generateMap();
     }
 
     private void generateMap()
     {
         grid2d = new int[width, height];
         
+    }
+
+    public Visualizer(int[] grid)
+    {
+        this.grid = grid;
+        generateMap();
+
     }
 
     public int[,] convertArrayTo2D(int []array)
