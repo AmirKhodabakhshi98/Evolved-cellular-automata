@@ -5,10 +5,10 @@ using System.IO;
 using System.Text;
 using UnityEngine;
 
-public class GeneticAlgorithm : MonoBehaviour
+public class GeneticAlgorithm 
 {
 
-    public int maxGenerations = 10;
+    public int maxGenerations = 1000;
     public int populationSize = 30;
     public int cellularAutomataIterations = 5;
     public float mutationProbability;
@@ -32,7 +32,7 @@ public class GeneticAlgorithm : MonoBehaviour
 
     public GeneticAlgorithm()
     {
-
+       // test();
     }
 
     public CellularAutomata[] test()
@@ -45,10 +45,10 @@ public class GeneticAlgorithm : MonoBehaviour
         StringBuilder sb = new StringBuilder();
         while (generations < maxGenerations)
         {
-        //    population = GenerateCellularAutomataLevels(population, startingStateCollection);   
-            population = FitnessFunction.scoreLevels(population);
-      //      Array.Sort(population);
-      //      population = GenerateNewPop(population);   
+            population = GenerateCellularAutomataLevels(population, startingStateCollection);   
+            population = FitnessFunction.scoreLevels(population);   
+            Array.Sort(population);
+            population = GenerateNewPop(population);   
             
            
             generations++;
@@ -58,7 +58,7 @@ public class GeneticAlgorithm : MonoBehaviour
 
         int[][] topLevel = population[0].getLevels();
 
-        new Visualizer(topLevel[0]);
+     //   new Visualizer(topLevel[0]);
 
         for(int i=0; i < 400; i++)
         {
@@ -66,7 +66,8 @@ public class GeneticAlgorithm : MonoBehaviour
             
         }
 
-        string path = @"E:\backup ssd\downloads\MAU HT 20\PCG kandidat\output\output.txt";
+        //string path = @"E:\backup ssd\downloads\MAU HT 20\PCG kandidat\output\output.txt";
+        string path = @"C:\github\Evolved CA\Evolved-CA\Evolved CA\Evolved-CA\Assets\output\output-" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + ".txt";
         File.WriteAllText(path, sb.ToString());
 
         return population;
@@ -137,10 +138,10 @@ public class GeneticAlgorithm : MonoBehaviour
      CellularAutomata[] GenerateLevels()
     {
         CellularAutomata[] pop = new CellularAutomata[populationSize];
-
+        int id = 0;
         for(int i=0; i<populationSize; i++)
         {
-            pop[i] = new CellularAutomata();
+            pop[i] = new CellularAutomata(id++);
         }
 
         return pop;

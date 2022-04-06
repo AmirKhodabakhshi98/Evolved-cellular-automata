@@ -8,6 +8,7 @@ public class CellularAutomata : System.IComparable<CellularAutomata>
     private float fitnessScore = 0f;
     private int[] rules;
     private int[][] levels;
+    private int identifier;
 
 
     // Start is called before the first frame update
@@ -17,11 +18,15 @@ public class CellularAutomata : System.IComparable<CellularAutomata>
 
     }
 
-    public CellularAutomata(){
+    public CellularAutomata(int identifier){
         this.rules = GetRandomRules();
-        
+        this.identifier = identifier;
     }
 
+    public int getIdentifier()
+    {
+        return identifier;
+    }
     public int getRuleSize()
     {
         return this.ruleSize;

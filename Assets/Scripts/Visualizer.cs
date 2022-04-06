@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Visualizer : MonoBehaviour
 {
-    public int width;
-    public int height;
+  //  public int width;
+   // public int height;
     
     int[] grid;
     int[,] grid2d;
@@ -15,7 +15,7 @@ public class Visualizer : MonoBehaviour
 
     void Start()
     {
-    //    grid = StartingStateGenerator.getStartingState();
+        grid = StartingStateGenerator.getStartingState();
         GeneticAlgorithm ga = new GeneticAlgorithm();
         CellularAutomata[] ca = ga.test();
         int[][] lvls = ca[0].getLevels();
@@ -23,29 +23,29 @@ public class Visualizer : MonoBehaviour
 
         
         grid = lvls[0];
+    //    grid = StartingStateGenerator.getStartingState();
+        DrawCA(convertArrayTo2D(grid));
 
 
-        generateMap();
+    //    generateMap();
     }
 
     private void Update()
     {
-        generateMap();
+    
 
     }
-
+    
     private void generateMap()
     {
-        grid2d = new int[width, height];
+   //     grid2d = new int[width, height];
         
     }
 
-    public Visualizer(int[] grid)
-    {
-     //   this.grid = grid;
-      //  generateMap();
 
-    }
+
+
+
 
     public int[,] convertArrayTo2D(int []array)
     {
@@ -63,7 +63,7 @@ public class Visualizer : MonoBehaviour
             }
         } return Array2d;
     }
-
+    /*
     void OnDrawGizmos()
     {
         if (grid2d != null)
@@ -80,5 +80,30 @@ public class Visualizer : MonoBehaviour
             }
         }
     }
+    */
+    int side = 20;
+    public Sprite sprite;
+    public int[,] altGrid;
+    void DrawCA(int[,] input)
+    {
 
+        altGrid = new int[side, side];
+        for(int i=0; i<side;  i++)
+        {
+            for(int j=0; j<side; j++)
+            {
+                altGrid[i, j] = input[i,j];
+                SpawnTile(i, j, altGrid[i, j]);
+            }
+        }
+    }
+
+    private void SpawnTile(int x, int y, int value)
+    {
+        GameObject g = new GameObject("X: " + x + "Y:" + y);
+        g.transform.position = new Vector3(x - (side - 0.5f), y - (side - 0.5f));
+        var s = g.AddComponent<SpriteRenderer>();
+        s.sprite = sprite;
+        s.color = new Color(value, value, value);
+    }
 }
