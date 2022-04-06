@@ -15,7 +15,7 @@ public class GeneticAlgorithm
     public float crossoverProbability = 0.6f;
     public int elitismSize = 6;
     public int tournamentSize = 5;
-    public int startingStatesAmount = 100;
+    public int startingStatesAmount = 1;
 
 
     // Start is called before the first frame update
@@ -39,7 +39,7 @@ public class GeneticAlgorithm
     {
         int generations = 0;
         int currFittest = 0;
-        int maxfitness = 40000;
+        int maxfitness = 900;
 
         CellularAutomata[] population = GenerateLevels();
         int[][] startingStateCollection = StartingStateGenerator.getStartingStateCollection(startingStatesAmount);
@@ -56,22 +56,24 @@ public class GeneticAlgorithm
 
             currFittest = (int) population[0].getFitness();
             generations++;
-            int avg = 0;
+            float avg = 0;
             for(int i=0; i<population.Length; i++)
             {
                 avg += (int)population[i].getFitness();
             }
+            avg = avg / populationSize;
             sb.Append(avg + "\n");
         }
-        sb.Append("gen: " + generations);
+        sb.Append("gen: " + generations +"\n");
 
-        int[][] topLevel = population[0].getLevels();
+        
 
-     //   new Visualizer(topLevel[0]);
+        //   new Visualizer(topLevel[0]);
 
-        for(int i=0; i < 400; i++)
+        int[] rules = population[0].getRules();
+        for(int i=0; i < 512; i++)
         {
-            sb.Append (topLevel[0][i] + ", ");
+            sb.Append (rules[i] + ", ");
             
         }
 

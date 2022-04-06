@@ -5,14 +5,15 @@ using UnityEngine;
 public static class StartingStateGenerator 
 {
      
-    public static int gridSize = 400;
+    public static int gridSize = 900;
     public static float chanceOfCellOn = 0.5F;
 
     //returns a starting state array based on size with a certain chance of each cell being on.
     public static int[] getStartingState(){
-        int[] startingState = new int[gridSize];    
-
-            for(int i =0; i<gridSize; i++)
+        int[] startingState = new int[gridSize];
+        startingState[0] = 2;
+        startingState[gridSize-1] = 3;
+            for(int i =1; i<gridSize-1; i++)
             {
                 if (randomChanceOn())
                 {

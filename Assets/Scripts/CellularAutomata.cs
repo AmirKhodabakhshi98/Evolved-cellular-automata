@@ -114,7 +114,7 @@ public class CellularAutomata : System.IComparable<CellularAutomata>
      int[] GetRandomRules()
     {
         int[] rules = new int[ruleSize];
-
+       
         for(int i=0; i<rules.Length; i++)
         {
             rules[i] = Random.Range(0, 2);
@@ -131,9 +131,10 @@ public class CellularAutomata : System.IComparable<CellularAutomata>
     int[] applyRulesForIterations(int[] grid, int[] rules, int iterations)
     {
         int[] temp = new int[grid.Length];
-
+        temp[0] = grid[0];
+        temp[grid.Length - 1] = grid[grid.Length-1];
          for(int itr=0; itr<iterations; itr++) { 
-            for(int i=0; i<grid.Length; i++)
+            for(int i=1; i<grid.Length-1; i++)
             {
                 if (shouldCellBeOn(grid, i, rules))
                 {

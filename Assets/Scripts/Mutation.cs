@@ -16,7 +16,7 @@ public class Mutation : MonoBehaviour
     {
 
             //loop through each rule array
-            for (int j = 0; j < candidate.getRuleSize(); j++)
+            for (int j = 1; j < candidate.getRuleSize()-1; j++)
             {
                 float randomValue = Random.Range(0f, 1f);
 

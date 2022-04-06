@@ -21,7 +21,7 @@ public class Crossover : MonoBehaviour
         int length = candidate1.Length;
 
 
-        int crossoverPoint = Random.Range(1, length);  //if crossoverpoint is 0 then children will just be copies of parents.
+        int crossoverPoint = Random.Range(2, length-1);  //if crossoverpoint is 0 then children will just be copies of parents.
 
 
 

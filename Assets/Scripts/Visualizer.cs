@@ -81,7 +81,7 @@ public class Visualizer : MonoBehaviour
         }
     }
     */
-    int side = 20;
+    int side = 30;
     public Sprite sprite;
     public int[,] altGrid;
     void DrawCA(int[,] input)
@@ -92,10 +92,27 @@ public class Visualizer : MonoBehaviour
         {
             for(int j=0; j<side; j++)
             {
-                altGrid[i, j] = input[i,j];
-                SpawnTile(i, j, altGrid[i, j]);
+                if ((i == 0 && j == 0) || (i==side-1 && j==side-1))
+                {
+                    altGrid[i, j] = input[i, j];
+                    SpawnSpecial(i, j);
+                }
+                else
+                {
+                    altGrid[i, j] = input[i, j];
+                    SpawnTile(i, j, altGrid[i, j]);
+                }
+                }
             }
-        }
+    }
+
+    private void SpawnSpecial(int x, int y)
+    {
+        GameObject g = new GameObject("X: " + x + "Y:" + y);
+        g.transform.position = new Vector3(x - (side - 0.5f), y - (side - 0.5f));
+        var s = g.AddComponent<SpriteRenderer>();
+        s.sprite = sprite;
+        s.color = new Color(0, 1, 0,1);
     }
 
     private void SpawnTile(int x, int y, int value)
