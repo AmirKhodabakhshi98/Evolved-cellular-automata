@@ -69,7 +69,7 @@ public class GeneticAlgorithm
         //string path = @"E:\backup ssd\downloads\MAU HT 20\PCG kandidat\output\output.txt";
         string path = @"C:\github\Evolved CA\Evolved-CA\Evolved CA\Evolved-CA\Assets\output\output-" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + ".txt";
         string path2 = @"C:\Users\Adel\Documents\GitHub\Evolved-cellular-automata\Assets\Adlers outputs" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + ".txt";
-        File.WriteAllText(path2, sb.ToString());
+        File.WriteAllText(path, sb.ToString());
 
         return population;
 

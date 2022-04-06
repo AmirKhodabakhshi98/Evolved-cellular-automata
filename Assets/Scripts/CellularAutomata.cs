@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class CellularAutomata : System.IComparable<CellularAutomata>
 {
@@ -20,8 +22,11 @@ public class CellularAutomata : System.IComparable<CellularAutomata>
     public CellularAutomata(CellularAutomata ca)
     {
         this.fitnessScore = ca.getFitness();
-        this.rules = ca.getRules();
-        this.levels = ca.getLevels();
+        this.rules = new int[ruleSize];
+        this.levels = new int[ca.getLevels().Length][];
+        Array.Copy(ca.getRules(), this.rules, ca.getRules().Length);
+        Array.Copy(ca.getLevels(), this.levels, ca.getLevels().Length);
+        
 
     }
 
