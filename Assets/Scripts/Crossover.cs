@@ -18,8 +18,6 @@ public class Crossover : MonoBehaviour
             return (candidate1, candidate2);
         }
 
-        Debug.Log("crosssss");
-
         int length = candidate1.Length;
 
 
