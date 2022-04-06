@@ -26,19 +26,20 @@ public class Crossover : MonoBehaviour
 
 
 
-        int[] child1 = candidate1;
+        int[] child1 = new int[length];
+        int[] child2 = new int[length];
 
-        for(int i=crossoverPoint; i<length; i++)
+        for(int i=0; i<crossoverPoint; i++)
         {
             child1[i] = candidate2[i];
+            child2[i] = candidate1[i];        
         }
 
-
-        int[] child2 = candidate2;
 
         for (int i=crossoverPoint; i<length; i++)
         {
             child2[i] = candidate1[i];
+            child1[i] = candidate2[i];
         }
 
 

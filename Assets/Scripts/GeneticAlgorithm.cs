@@ -8,7 +8,7 @@ using UnityEngine;
 public class GeneticAlgorithm 
 {
 
-    public int maxGenerations = 1000;
+    public int maxGenerations = 100;
     public int populationSize = 30;
     public int cellularAutomataIterations = 5;
     public float mutationProbability;
@@ -96,17 +96,17 @@ public class GeneticAlgorithm
         for(int i=elitismSize; i<populationSize; i += 2)
         {
             //select 2 new candidates based on 2 tournament selection runs
-            CellularAutomata candidate1 = TournamentSelection.PerformTournamentSelection(oldPop,tournamentSize);
-            CellularAutomata candidate2 = TournamentSelection.PerformTournamentSelection(oldPop, tournamentSize);
+            CellularAutomata candidate1 = new CellularAutomata(TournamentSelection.PerformTournamentSelection(oldPop,tournamentSize));
+            CellularAutomata candidate2 = new CellularAutomata(TournamentSelection.PerformTournamentSelection(oldPop, tournamentSize));
             
             //get their rules and run crossover method on them
-            int[] rules1 = candidate1.getRules();
-            int[] rules2 = candidate2.getRules();
-            (rules1, rules2) = Crossover.SinglePointCrossover(rules1,rules2,crossoverProbability);
+          //  int[] rules1 = candidate1.getRules();
+          //  int[] rules2 = candidate2.getRules();
+          //  (rules1, rules2) = Crossover.SinglePointCrossover(rules1,rules2,crossoverProbability);
             
             //set the rules resulting from the crossover method to the candidates
-            candidate1.setRules(rules1);
-            candidate2.setRules(rules2);
+         //   candidate1.setRules(rules1);
+         //   candidate2.setRules(rules2);
             
             //perform mutation on them
             candidate1 = Mutation.Mutate(candidate1);
@@ -127,7 +127,8 @@ public class GeneticAlgorithm
     {
         for(int i=0; i< elitismSize; i++)
         {
-            newPop[i] = oldPop[i];
+            CellularAutomata ca = new CellularAutomata(oldPop[i]);
+            newPop[i] = ca;
         }
 
         return newPop;
@@ -138,10 +139,12 @@ public class GeneticAlgorithm
      CellularAutomata[] GenerateLevels()
     {
         CellularAutomata[] pop = new CellularAutomata[populationSize];
+
         int id = 0;
         for(int i=0; i<populationSize; i++)
         {
-            pop[i] = new CellularAutomata(id++);
+            pop[i] = new CellularAutomata(id);
+            id++;
         }
 
         return pop;
