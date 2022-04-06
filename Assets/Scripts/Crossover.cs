@@ -18,6 +18,7 @@ public class Crossover : MonoBehaviour
             return (candidate1, candidate2);
         }
 
+        Debug.Log("crosssss");
 
         int length = candidate1.Length;
 
@@ -31,15 +32,15 @@ public class Crossover : MonoBehaviour
 
         for(int i=0; i<crossoverPoint; i++)
         {
-            child1[i] = candidate2[i];
-            child2[i] = candidate1[i];        
+            child1[i] = candidate1[i];
+            child2[i] = candidate2[i];        
         }
 
 
         for (int i=crossoverPoint; i<length; i++)
         {
-            child2[i] = candidate1[i];
             child1[i] = candidate2[i];
+            child2[i] = candidate1[i];
         }
 
 

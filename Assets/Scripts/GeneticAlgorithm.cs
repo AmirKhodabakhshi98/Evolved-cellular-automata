@@ -98,20 +98,29 @@ public class GeneticAlgorithm
             //select 2 new candidates based on 2 tournament selection runs
             CellularAutomata candidate1 = new CellularAutomata(TournamentSelection.PerformTournamentSelection(oldPop,tournamentSize));
             CellularAutomata candidate2 = new CellularAutomata(TournamentSelection.PerformTournamentSelection(oldPop, tournamentSize));
-            
+           // string allContents = string.Join(", ", candidate1.getRules());
+         //   string allContents2 = string.Join(", ", candidate2.getRules());
+       //     Debug.Log(allContents);
+     //       Debug.Log(allContents2);
+
             //get their rules and run crossover method on them
-          //  int[] rules1 = candidate1.getRules();
-          //  int[] rules2 = candidate2.getRules();
-          //  (rules1, rules2) = Crossover.SinglePointCrossover(rules1,rules2,crossoverProbability);
+            int[] rules1 = candidate1.getRules();
+            int[] rules2 = candidate2.getRules();
+            (rules1, rules2) = Crossover.SinglePointCrossover(rules1,rules2,crossoverProbability);
             
             //set the rules resulting from the crossover method to the candidates
-         //   candidate1.setRules(rules1);
-         //   candidate2.setRules(rules2);
-            
+            candidate1.setRules(rules1);
+            candidate2.setRules(rules2);
+          //  allContents = string.Join(", ", candidate1.getRules());
+          //  allContents2 = string.Join(", ", candidate2.getRules());
+          //  Debug.Log(allContents);
+         //   Debug.Log(allContents2);
+
+
             //perform mutation on them
             candidate1 = Mutation.Mutate(candidate1);
             candidate2 = Mutation.Mutate(candidate2);
-            
+
             //add to new pop
             newPop[i] = candidate1;
             newPop[i+1] = candidate2;
