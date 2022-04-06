@@ -84,11 +84,11 @@ public class CellularAutomata : System.IComparable<CellularAutomata>
     {
         if (this.fitnessScore > other.fitnessScore)
         {
-            return 1;
+            return -1;
         }
         if (this.fitnessScore < other.fitnessScore)
         {
-            return -1;
+            return 1;
         }
 
         return 0;

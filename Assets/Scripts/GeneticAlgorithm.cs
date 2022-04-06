@@ -8,7 +8,7 @@ using UnityEngine;
 public class GeneticAlgorithm : MonoBehaviour
 {
 
-    public int maxGenerations = 1;
+    public int maxGenerations = 10;
     public int populationSize = 30;
     public int cellularAutomataIterations = 5;
     public float mutationProbability;
@@ -45,10 +45,12 @@ public class GeneticAlgorithm : MonoBehaviour
         StringBuilder sb = new StringBuilder();
         while (generations < maxGenerations)
         {
-            population = GenerateCellularAutomataLevels(population, startingStateCollection);   
-            FitnessFunction.scoreLevels(population);
-            Array.Sort(population);
-            population = GenerateNewPop(population);   
+        //    population = GenerateCellularAutomataLevels(population, startingStateCollection);   
+            population = FitnessFunction.scoreLevels(population);
+      //      Array.Sort(population);
+      //      population = GenerateNewPop(population);   
+            
+           
             generations++;
          
             sb.Append(population[0].getFitness() + "\n");

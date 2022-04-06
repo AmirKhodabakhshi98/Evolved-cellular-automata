@@ -237,12 +237,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd9cb45475342de43b2c411f187d9286, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxGenerations: 100
-  populationSize: 11
+  maxGenerations: 1
+  populationSize: 30
   cellularAutomataIterations: 5
   mutationProbability: 0
   crossoverProbability: 0.6
-  elitismSize: 5
+  elitismSize: 10
   tournamentSize: 5
   startingStatesAmount: 10
 --- !u!114 &1897703393

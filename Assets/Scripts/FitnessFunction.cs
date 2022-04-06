@@ -16,7 +16,7 @@ public class FitnessFunction : MonoBehaviour
         
     }
 
-    public static void scoreLevels(CellularAutomata[] population)
+    public static CellularAutomata[] scoreLevels(CellularAutomata[] population)
     {
         for(int i=0; i<population.Length; i++)
         {
@@ -26,6 +26,7 @@ public class FitnessFunction : MonoBehaviour
 
             population[i].setFitness(score);//ändra
         }
+        return population;
     }
 
     /*
