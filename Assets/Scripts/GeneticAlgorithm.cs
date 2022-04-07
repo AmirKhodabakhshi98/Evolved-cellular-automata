@@ -15,7 +15,9 @@ public class GeneticAlgorithm
     public float crossoverProbability = 0.6f;
     public int elitismSize = 6;
     public int tournamentSize = 5;
-    public int startingStatesAmount = 100;
+    public int startingStatesAmount = 1;
+    public int convergenceGenerations = 100;
+    public float convergenceDifference=1;
 
 
     // Start is called before the first frame update
@@ -40,19 +42,20 @@ public class GeneticAlgorithm
 
         StringBuilder sb1 = new StringBuilder();
         StringBuilder sb2 = new StringBuilder();
-     //   StringBuilder sb3 = new StringBuilder();
+        StringBuilder sb3 = new StringBuilder();
         CellularAutomata[] population = GenerateLevels();
         ;
 
         for (int n=0; n<nbrOfRuns; n++) { 
             int generations = 0;
             int currFittest = 0;
-            int maxfitness = 89800;
+            int maxfitness = 898;
 
             population = GenerateLevels();
             int[][] startingStateCollection = StartingStateGenerator.getStartingStateCollection(startingStatesAmount);
 
-
+            int convergenceCounter = 0;
+            float prevfitness=0;
 
             while (generations < maxGenerations && currFittest<maxfitness)
             {
@@ -63,18 +66,32 @@ public class GeneticAlgorithm
 
 
                 currFittest = (int) population[0].getFitness();
+                if ((currFittest - prevfitness) < convergenceDifference)
+                {
+                    convergenceCounter++;
+                    if(convergenceCounter == convergenceGenerations)
+                    {
+                        break;
+                    }
+                }
+                else
+                {
+                    convergenceCounter = 0;
+                }
+                prevfitness = currFittest;
+
                 generations++;
                 float avg = 0;
-                for(int i=0; i<population.Length; i++)
-                {
-                    avg += (int)population[i].getFitness();
-                }
-                avg = avg / populationSize;
-            //    sb1.Append((int)Math.Round(avg) + "\n");
-           //     sb2.Append(population[0].getFitness() + "\n");
+             //   for(int i=0; i<population.Length; i++)
+            //    {
+             //       avg += (int)population[i].getFitness();
+             //   }
+            //    avg = avg / populationSize;
+            //    sb2.Append((int)Math.Round(avg) + "\n");
+           //     sb3.Append(population[0].getFitness() + "\n");
             //    sb3.Append("gen: " + generations + "\n" + "rules: ");
             }
-            sb1.Append(population[0].getFitness() + "\n");
+            sb1.Append("mostFit: " + population[0].getFitness() + " gen: " + generations + " converg: " + convergenceCounter + "\n");
 
         }
    
@@ -97,13 +114,13 @@ public class GeneticAlgorithm
 
     
 
-        string path1 = @"E:\backup ssd\downloads\MAU HT 20\PCG kandidat\output\highest-"+ DateTime.Now.ToString("MMddHHmmss") + ".txt";
-        string path2 = @"E:\backup ssd\downloads\MAU HT 20\PCG kandidat\output\avg-"+ DateTime.Now.ToString("MMddHHmmss") + ".txt";
-        string path3 = @"E:\backup ssd\downloads\MAU HT 20\PCG kandidat\output\details-"+ DateTime.Now.ToString("MMddHHmmss") + ".txt";
+        string path1 = @"E:\backup ssd\downloads\MAU HT 20\PCG kandidat\output\detailsAllRuns-"+ DateTime.Now.ToString("MMddHHmmss") + ".txt";
+     //   string path2 = @"E:\backup ssd\downloads\MAU HT 20\PCG kandidat\output\avg-"+ DateTime.Now.ToString("MMddHHmmss") + ".txt";
+     //   string path3 = @"E:\backup ssd\downloads\MAU HT 20\PCG kandidat\output\highest-"+ DateTime.Now.ToString("MMddHHmmss") + ".txt";
        // string path = @"C:\github\Evolved CA\Evolved-CA\Evolved CA\Evolved-CA\Assets\output\output-" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + ".txt";
       //  string path2 = @"C:\Users\Adel\Documents\GitHub\Evolved-cellular-automata\Assets\Adlers outputs" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + ".txt";
         File.WriteAllText(path1, sb1.ToString());
-    //    File.WriteAllText(path2, sb2.ToString());
+     //   File.WriteAllText(path2, sb2.ToString());
     //    File.WriteAllText(path3, sb3.ToString());
 
         return population;
@@ -185,11 +202,11 @@ public class GeneticAlgorithm
     {
         CellularAutomata[] pop = new CellularAutomata[populationSize];
 
-        int id = 0;
+        
         for(int i=0; i<populationSize; i++)
         {
-            pop[i] = new CellularAutomata(id);
-            id++;
+            pop[i] = new CellularAutomata();
+            
         }
 
         return pop;

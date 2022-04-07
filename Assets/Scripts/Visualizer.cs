@@ -17,7 +17,7 @@ public class Visualizer : MonoBehaviour
     {
         grid = StartingStateGenerator.getStartingState();
         GeneticAlgorithm ga = new GeneticAlgorithm();
-        CellularAutomata[] ca = ga.test(2);
+        CellularAutomata[] ca = ga.test(3);
         int[][] lvls = ca[0].getLevels();
 
   

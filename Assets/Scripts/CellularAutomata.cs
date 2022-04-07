@@ -31,9 +31,9 @@ public class CellularAutomata : System.IComparable<CellularAutomata>
     }
 
     
-    public CellularAutomata(int id){
+    public CellularAutomata(){
         this.rules = GetRandomRules();
-        this.id = id;
+        
     }
 
     public int getRuleSize()
