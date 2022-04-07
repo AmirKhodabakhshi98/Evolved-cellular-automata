@@ -76,8 +76,6 @@ public class GeneticAlgorithm
             }
             sb1.Append(population[0].getFitness() + "\n");
 
-
-
         }
    
         
@@ -99,8 +97,8 @@ public class GeneticAlgorithm
 
     
 
-        string path1 = @"E:\backup ssd\downloads\MAU HT 20\PCG kandidat\output\avg-"+ DateTime.Now.ToString("MMddHHmmss") + ".txt";
-        string path2 = @"E:\backup ssd\downloads\MAU HT 20\PCG kandidat\output\highest-"+ DateTime.Now.ToString("MMddHHmmss") + ".txt";
+        string path1 = @"E:\backup ssd\downloads\MAU HT 20\PCG kandidat\output\highest-"+ DateTime.Now.ToString("MMddHHmmss") + ".txt";
+        string path2 = @"E:\backup ssd\downloads\MAU HT 20\PCG kandidat\output\avg-"+ DateTime.Now.ToString("MMddHHmmss") + ".txt";
         string path3 = @"E:\backup ssd\downloads\MAU HT 20\PCG kandidat\output\details-"+ DateTime.Now.ToString("MMddHHmmss") + ".txt";
        // string path = @"C:\github\Evolved CA\Evolved-CA\Evolved CA\Evolved-CA\Assets\output\output-" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + ".txt";
       //  string path2 = @"C:\Users\Adel\Documents\GitHub\Evolved-cellular-automata\Assets\Adlers outputs" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + ".txt";
