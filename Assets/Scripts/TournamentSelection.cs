@@ -1,4 +1,5 @@
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,7 +22,7 @@ public class TournamentSelection : MonoBehaviour
             while (true)
             {
                 bool exists = false;
-                int randomCandidate = Random.Range(0, population.Length); // picks a random candidate from the population
+                int randomCandidate = UnityEngine.Random.Range(0, population.Length); // picks a random candidate from the population
                 CellularAutomata candidate = population[randomCandidate]; // sets a candidate
                 for(int j = 0; j <= i; j++)
                 {
@@ -41,6 +42,7 @@ public class TournamentSelection : MonoBehaviour
                              
         }
 
+        Array.Sort(tournamentArray);
         return tournamentArray[0];       
     
         

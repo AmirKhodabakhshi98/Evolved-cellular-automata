@@ -8,7 +8,7 @@ using UnityEngine;
 public class GeneticAlgorithm 
 {
 
-    public int maxGenerations = 5000;
+    public int maxGenerations = 100;
     public int populationSize = 50;
     public int cellularAutomataIterations = 5;
     public float mutationProbability;
