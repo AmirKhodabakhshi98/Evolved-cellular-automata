@@ -18,26 +18,26 @@ public class TournamentSelection : MonoBehaviour
         for (int i = 0; i < tournamentArray.Length; i++)
         {             
 
-         //   while (true)
-          //  {
+            while (true)
+            {
                 bool exists = false;
                 int randomCandidate = Random.Range(0, population.Length); // picks a random candidate from the population
                 CellularAutomata candidate = population[randomCandidate]; // sets a candidate
-           //     for(int j = 0; j <= i; j++)
-           //     {
-                //    if (tournamentArray[j] == candidate)
-                //    {
-                //        exists = true;
-                //        break;
-                //    }
+                for(int j = 0; j <= i; j++)
+                {
+                    if (tournamentArray[j] == candidate)
+                    {
+                        exists = true;
+                        break;
+                    }
                     
-           //     }
-          //      if (!exists)
-          //          {
+                }
+                if (!exists)
+                    {
                         tournamentArray[i] = candidate;
-          //              break;
-          //          }
-           // }
+                        break;
+                    }
+            }
                              
         }
 

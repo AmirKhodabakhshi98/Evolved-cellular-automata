@@ -62,7 +62,7 @@ public class FitnessFunction : MonoBehaviour
 
             for(int j=0; j<levels[i].Length; j++)
             {
-                if (levels[i][j] == 0)
+                if (levels[i][j] == 1)
                 {
                     on++;
                     totalOn++;
