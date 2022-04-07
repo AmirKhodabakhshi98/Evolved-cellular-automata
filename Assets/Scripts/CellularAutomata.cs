@@ -30,7 +30,7 @@ public class CellularAutomata : System.IComparable<CellularAutomata>
 
     }
 
-    int id = -1;
+    
     public CellularAutomata(int id){
         this.rules = GetRandomRules();
         this.id = id;

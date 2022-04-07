@@ -8,14 +8,14 @@ using UnityEngine;
 public class GeneticAlgorithm 
 {
 
-    public int maxGenerations = 100;
+    public int maxGenerations = 1000;
     public int populationSize = 50;
     public int cellularAutomataIterations = 1;
     public float mutationProbability;
     public float crossoverProbability = 0.6f;
     public int elitismSize = 6;
     public int tournamentSize = 5;
-    public int startingStatesAmount = 1;
+    public int startingStatesAmount = 100;
 
 
     // Start is called before the first frame update
@@ -39,7 +39,7 @@ public class GeneticAlgorithm
     {
 
         StringBuilder sb1 = new StringBuilder();
-     //   StringBuilder sb2 = new StringBuilder();
+        StringBuilder sb2 = new StringBuilder();
      //   StringBuilder sb3 = new StringBuilder();
         CellularAutomata[] population = GenerateLevels();
         ;
@@ -47,7 +47,7 @@ public class GeneticAlgorithm
         for (int n=0; n<nbrOfRuns; n++) { 
             int generations = 0;
             int currFittest = 0;
-            int maxfitness = 898;
+            int maxfitness = 89800;
 
             population = GenerateLevels();
             int[][] startingStateCollection = StartingStateGenerator.getStartingStateCollection(startingStatesAmount);
@@ -65,11 +65,11 @@ public class GeneticAlgorithm
                 currFittest = (int) population[0].getFitness();
                 generations++;
                 float avg = 0;
-            //    for(int i=0; i<population.Length; i++)
-            //    {
-            //        avg += (int)population[i].getFitness();
-           //     }
-           //     avg = avg / populationSize;
+                for(int i=0; i<population.Length; i++)
+                {
+                    avg += (int)population[i].getFitness();
+                }
+                avg = avg / populationSize;
             //    sb1.Append((int)Math.Round(avg) + "\n");
            //     sb2.Append(population[0].getFitness() + "\n");
             //    sb3.Append("gen: " + generations + "\n" + "rules: ");
