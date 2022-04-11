@@ -6,33 +6,38 @@ public static class StartingStateGenerator
 {
      
     public static int gridSize = 900;
+    public static int gridSide = 30;
     public static float chanceOfCellOn = 0.5F;
 
     //returns a starting state array based on size with a certain chance of each cell being on.
-    public static int[] getStartingState(){
-        int[] startingState = new int[gridSize];
-        startingState[0] = 2;
-        startingState[gridSize-1] = 3;
-            for(int i =1; i<gridSize-1; i++)
+    public static int[,] getStartingState(){
+        int[,] startingState = new int[gridSide,gridSide];
+            for(int i= 0; i<gridSide-1; i++)
             {
+                for(int j=0; j < gridSide - 1; j++)
+                {
                 if (randomChanceOn())
                 {
-                    
-                    startingState[i] = 1;
+                    startingState[i,j] = 1;
                 }
-            
+                }
             }
-       
-     //   Debug.Log(string.Join(", ", startingState));
+
+        startingState[0, 0] = 2;
+        startingState[gridSide - 1, gridSide - 1] = 3;
+
+
+        //   Debug.Log(string.Join(", ", startingState));
 
 
         return startingState;
         }
 
 
-    public static int[][] getStartingStateCollection(int startingStatesAmount)
+    public static int[][,] getStartingStateCollection(int startingStatesAmount)
     {
-        int[][] startingStates = new int[startingStatesAmount][];
+        
+        int[][,] startingStates = new int[startingStatesAmount][,];
         for(int i=0; i<startingStatesAmount; i++)
         {
             startingStates[i] = getStartingState();

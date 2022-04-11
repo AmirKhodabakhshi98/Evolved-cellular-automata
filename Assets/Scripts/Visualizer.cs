@@ -15,16 +15,16 @@ public class Visualizer : MonoBehaviour
 
     void Start()
     {
-        grid = StartingStateGenerator.getStartingState();
+        //grid2d = StartingStateGenerator.getStartingState();
         GeneticAlgorithm ga = new GeneticAlgorithm();
-        CellularAutomata[] ca = ga.test(3);
-        int[][] lvls = ca[0].getLevels();
+        CellularAutomata[] ca = ga.test(1);
+        int[][,] lvls = ca[0].getLevels();
 
   
         
-        grid = lvls[0];
+        grid2d = lvls[0];
     //    grid = StartingStateGenerator.getStartingState();
-        DrawCA(convertArrayTo2D(grid));
+        DrawCA(grid2d);
 
 
     //    generateMap();

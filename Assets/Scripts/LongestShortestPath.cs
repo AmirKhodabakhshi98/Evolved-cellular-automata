@@ -6,34 +6,12 @@ public class LongestShortestPath : MonoBehaviour
 {
 
 
-    void Start()
-    {
-        int[] input = new int[] { 2, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 3 };
-        int dist = shortestPath(input);
-        Debug.Log(dist);
-    }
 
-    int shortestPath(int[] input) {
-        int[,] level = convertArrayTo2D(input);
+    int shortestPath(int[,] level) {
+        
         Node source = new Node(0, 0, 0);
 
-        /*    firstloop:
-            for(int i=0; i<level.Length; i++)
-            {
-                for(int j=0; j < level[i].Length; j++)
-                {
 
-                    if (level[i][j] == 2)
-                    {
-                        source.row = i;
-                        source.col = j;
-                        break firstloop;
-                    }
-
-                }
-            }
-
-            */
 
         Queue<Node> queue = new Queue<Node>();
         queue.Enqueue(new Node(source.row, source.col, 0));

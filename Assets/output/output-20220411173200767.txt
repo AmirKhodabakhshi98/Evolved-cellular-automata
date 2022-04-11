@@ -1,0 +1,1 @@
+mostFit: 838 gen: 397 converg: 100

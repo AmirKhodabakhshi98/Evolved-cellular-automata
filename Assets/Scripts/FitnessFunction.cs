@@ -52,24 +52,27 @@ public class FitnessFunction : MonoBehaviour
     }
     */
 
-    static float PercentageOn(int[][] levels)
+    static float PercentageOn(int[][,] levels)
     {
         float percentageOnTotal = 0f;
         float totalOn = 0;
-        for(int i=0; i<levels.Length; i++)
+        for(int n=0; n<levels.Length; n++)
         {
             int on = 0;
-
-            for(int j=0; j<levels[i].Length; j++)
+            for(int i=0; i<levels[0].GetLength(0); i++)
             {
-                if (levels[i][j] == 1)
+
+            for(int j=0; j<levels[0].GetLength(1); j++)
+            {
+                if (levels[n][i,j] == 1)
                 {
                     on++;
                     totalOn++;
                 }
             }
+            }
 
-            percentageOnTotal += ((float)on) / ((float)levels[i].Length);
+            percentageOnTotal += ((float)on) / ((float)levels[n].Length);
 
         }
 
