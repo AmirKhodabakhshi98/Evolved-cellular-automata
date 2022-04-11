@@ -24,7 +24,7 @@ public class FitnessFunction : MonoBehaviour
             //  score += PercentageOn(population[i].getLevels());
             for (int j = 0; j < population[i].getLevels().Length; j++) { 
 
-                score += LongestShortestPath.shortestPath(population[i].getLevels()[j]);
+                score += LongestShortestPath.shortestPath(population[i].getLevels()[j], 29 ,29);
 
             }
             population[i].setFitness(score);//ändra
