@@ -1,0 +1,1 @@
+mostFit: -3 gen: 10 converg: 10
