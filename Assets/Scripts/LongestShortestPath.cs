@@ -4,15 +4,132 @@ using UnityEngine;
 
 public class LongestShortestPath : MonoBehaviour
 {
-    // Start is called before the first frame update
+
+
     void Start()
     {
-        
+        int[] input = new int[] { 2, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 3 };
+        int dist = shortestPath(input);
+        Debug.Log(dist);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    int shortestPath(int[] input) {
+        int[,] level = convertArrayTo2D(input);
+        Node source = new Node(0, 0, 0);
+
+        /*    firstloop:
+            for(int i=0; i<level.Length; i++)
+            {
+                for(int j=0; j < level[i].Length; j++)
+                {
+
+                    if (level[i][j] == 2)
+                    {
+                        source.row = i;
+                        source.col = j;
+                        break firstloop;
+                    }
+
+                }
+            }
+
+            */
+
+        Queue<Node> queue = new Queue<Node>();
+        queue.Enqueue(new Node(source.row, source.col, 0));
+
+        bool[,] visited = new bool[level.Length, level.Length];
+        visited[source.row, source.col] = true;
+     
+        while (queue.Count != 0)
+        {
+            Node n = queue.Dequeue();
+
+            if (level[n.row,n.col] == 3)
+            {
+                return n.distance;
+            }
+
+            if (isValid(n.row - 1, n.col, level, visited))
+            {
+                queue.Enqueue(new Node(n.row - 1, n.col, n.distance + 1));
+                visited[n.row - 1, n.col] = true;
+            }
+
+            if (isValid(n.row + 1, n.col, level, visited))
+            {
+                queue.Enqueue(new Node(n.row + 1, n.col, n.distance + 1));
+                visited[n.row + 1, n.col] = true;
+            }
+
+            if (isValid(n.row, n.col - 1, level, visited))
+            {
+                queue.Enqueue(new Node(n.row, n.col - 1, n.distance + 1));
+                visited[n.row, n.col - 1] = true;
+            }
+
+            if (isValid(n.row, n.col + 1, level, visited))
+            {
+                queue.Enqueue(new Node(n.row, n.col + 1, n.distance + 1));
+                visited[n.row, n.col + 1] = true;
+            }
+
+
+
+
+        }
+        return -1;
     }
+
+    
+
+     bool isValid(int x, int y, int[,]level, bool[,] visited)
+    {
+        if(x>=0 && y>=0 && x<level.GetLength(0) && y<level.GetLength(1)
+            && level[x,y]!=0 && visited[x, y] == false)
+        {
+            return true;
+        }
+        return false;
+
+    }
+
+     class Node
+    {
+        public int row;
+        public int col;
+        public int distance;
+
+        public Node(int row, int col, int distance)
+        {
+            this.row = row;
+            this.col = col;
+            this.distance = distance;
+        }
+
+    }
+
+
+    public int[,] convertArrayTo2D(int[] array)
+    {
+            
+        int size = array.Length;
+        int sideLength = (int)Mathf.Sqrt(size);
+        int[,] Array2d = new int[sideLength, sideLength];
+        int count = 0;
+        for (int i = 0; i < sideLength; i++)
+        {
+            for (int j = 0; j < sideLength; j++)
+            {
+                Array2d[i, j] = array[count];
+                count++;
+            }
+        }
+        return Array2d;
+    }
+
+
+
+
+
 }
