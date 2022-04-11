@@ -10,13 +10,13 @@ public class GeneticAlgorithm
 
     public int maxGenerations = 1000;
     public int populationSize = 50;
-    public int cellularAutomataIterations = 1;
+    public int cellularAutomataIterations = 5;
     public float mutationProbability;
     public float crossoverProbability = 0.6f;
     public int elitismSize = 6;
     public int tournamentSize = 5;
-    public int startingStatesAmount = 1;
-    public int convergenceGenerations = 100;
+    public int startingStatesAmount = 10;
+    public int convergenceGenerations = 1000;
     public float convergenceDifference=1;
 
 

@@ -7,7 +7,8 @@ public class LongestShortestPath : MonoBehaviour
 
 
 
-    int shortestPath(int[,] level) {
+    //returns shortest path between start and input destination
+    public static int shortestPath(int[,] level, int destX, int destY) {
         
         Node source = new Node(0, 0, 0);
 
@@ -23,7 +24,7 @@ public class LongestShortestPath : MonoBehaviour
         {
             Node n = queue.Dequeue();
 
-            if (level[n.row,n.col] == 3)
+            if (n.row==destX && n.col == destY)
             {
                 return n.distance;
             }
@@ -61,7 +62,7 @@ public class LongestShortestPath : MonoBehaviour
 
     
 
-     bool isValid(int x, int y, int[,]level, bool[,] visited)
+     static bool isValid(int x, int y, int[,]level, bool[,] visited)
     {
         if(x>=0 && y>=0 && x<level.GetLength(0) && y<level.GetLength(1)
             && level[x,y]!=0 && visited[x, y] == false)
@@ -87,24 +88,6 @@ public class LongestShortestPath : MonoBehaviour
 
     }
 
-
-    public int[,] convertArrayTo2D(int[] array)
-    {
-            
-        int size = array.Length;
-        int sideLength = (int)Mathf.Sqrt(size);
-        int[,] Array2d = new int[sideLength, sideLength];
-        int count = 0;
-        for (int i = 0; i < sideLength; i++)
-        {
-            for (int j = 0; j < sideLength; j++)
-            {
-                Array2d[i, j] = array[count];
-                count++;
-            }
-        }
-        return Array2d;
-    }
 
 
 

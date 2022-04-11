@@ -20,10 +20,13 @@ public class FitnessFunction : MonoBehaviour
     {
         for(int i=0; i<population.Length; i++)
         {
-            float score = 0;      
-            score += PercentageOn(population[i].getLevels());
+            float score = 0;
+            //  score += PercentageOn(population[i].getLevels());
+            for (int j = 0; j < population[i].getLevels().Length; j++) { 
 
+                score += LongestShortestPath.shortestPath(population[i].getLevels()[j]);
 
+            }
             population[i].setFitness(score);//ändra
         }
         return population;

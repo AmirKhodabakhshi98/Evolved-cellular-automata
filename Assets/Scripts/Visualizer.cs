@@ -11,18 +11,18 @@ public class Visualizer : MonoBehaviour
     int[] grid;
     int[,] grid2d;
 
-
+    int[][,] lvls;
 
     void Start()
     {
         //grid2d = StartingStateGenerator.getStartingState();
         GeneticAlgorithm ga = new GeneticAlgorithm();
         CellularAutomata[] ca = ga.test(1);
-        int[][,] lvls = ca[0].getLevels();
+        lvls = ca[0].getLevels();
 
   
         
-        grid2d = lvls[0];
+        grid2d = lvls[iterator];
     //    grid = StartingStateGenerator.getStartingState();
         DrawCA(grid2d);
 
@@ -30,9 +30,19 @@ public class Visualizer : MonoBehaviour
     //    generateMap();
     }
 
+    int iterator = 0;
     private void Update()
     {
-    
+        if (Input.GetKeyDown("space"))
+        {
+            iterator++;
+            if (iterator >= lvls.Length)
+            {
+                iterator = 0;
+            }
+            DrawCA(lvls[iterator]);
+
+        }
 
     }
     
