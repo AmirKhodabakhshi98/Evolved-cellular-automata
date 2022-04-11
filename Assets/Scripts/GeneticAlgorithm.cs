@@ -15,7 +15,7 @@ public class GeneticAlgorithm
     public float crossoverProbability = 0.6f;
     public int elitismSize = 6;
     public int tournamentSize = 5;
-    public int startingStatesAmount = 3;
+    public int startingStatesAmount = 2;
     public int convergenceGenerations = 1000;
     public float convergenceDifference=1;
 
