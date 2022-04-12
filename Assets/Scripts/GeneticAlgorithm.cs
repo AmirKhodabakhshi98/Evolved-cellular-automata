@@ -15,7 +15,7 @@ public class GeneticAlgorithm
     public float crossoverProbability = 0.6f;
     public int elitismSize = 6;
     public int tournamentSize = 5;
-    public int startingStatesAmount = 2;
+    public int startingStatesAmount = 1;
     public int convergenceGenerations = 1000;
     public float convergenceDifference=1;
 
@@ -114,12 +114,12 @@ public class GeneticAlgorithm
 
     
 
-    //    string path1 = @"E:\backup ssd\downloads\MAU HT 20\PCG kandidat\output\detailsAllRuns-"+ DateTime.Now.ToString("MMddHHmmss") + ".txt";
+        string path1 = @"E:\backup ssd\downloads\MAU HT 20\PCG kandidat\output\detailsAllRuns-"+ DateTime.Now.ToString("MMddHHmmss") + ".txt";
      //   string path2 = @"E:\backup ssd\downloads\MAU HT 20\PCG kandidat\output\avg-"+ DateTime.Now.ToString("MMddHHmmss") + ".txt";
      //   string path3 = @"E:\backup ssd\downloads\MAU HT 20\PCG kandidat\output\highest-"+ DateTime.Now.ToString("MMddHHmmss") + ".txt";
-        string path = @"C:\github\Evolved CA\Evolved-CA\Evolved CA\Evolved-CA\Assets\output\output-" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + ".txt";
+     //   string path = @"C:\github\Evolved CA\Evolved-CA\Evolved CA\Evolved-CA\Assets\output\output-" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + ".txt";
       //  string path2 = @"C:\Users\Adel\Documents\GitHub\Evolved-cellular-automata\Assets\Adlers outputs" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + ".txt";
-        File.WriteAllText(path, sb1.ToString());
+        File.WriteAllText(path1, sb1.ToString());
      //   File.WriteAllText(path2, sb2.ToString());
     //    File.WriteAllText(path3, sb3.ToString());
 
