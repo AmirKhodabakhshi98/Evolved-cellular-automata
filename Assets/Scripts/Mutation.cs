@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Mutation : MonoBehaviour
 {
-    private static float mutationRate = 1f/512f;
+    private static float mutationProbability = 1f/512f;
 
 
 
@@ -21,7 +21,7 @@ public class Mutation : MonoBehaviour
                 float randomValue = Random.Range(0f, 1f);
 
                 // the chance will be 1/512
-                if (randomValue <= mutationRate)
+                if (randomValue <= mutationProbability)
                 {
                     candidate.flipRuleAtPos(j);
                 }
