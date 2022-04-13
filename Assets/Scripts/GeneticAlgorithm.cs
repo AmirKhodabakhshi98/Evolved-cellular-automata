@@ -8,7 +8,7 @@ using UnityEngine;
 public class GeneticAlgorithm 
 {
 
-    public int maxGenerations = 1000;
+    public int maxGenerations = 10;
     public int populationSize = 50;
     public int cellularAutomataIterations = 5;
     public float mutationProbability;
@@ -114,12 +114,12 @@ public class GeneticAlgorithm
 
     
 
-        string path1 = @"E:\backup ssd\downloads\MAU HT 20\PCG kandidat\output\detailsAllRuns-"+ DateTime.Now.ToString("MMddHHmmss") + ".txt";
+      //  string path1 = @"E:\backup ssd\downloads\MAU HT 20\PCG kandidat\output\detailsAllRuns-"+ DateTime.Now.ToString("MMddHHmmss") + ".txt";
      //   string path2 = @"E:\backup ssd\downloads\MAU HT 20\PCG kandidat\output\avg-"+ DateTime.Now.ToString("MMddHHmmss") + ".txt";
      //   string path3 = @"E:\backup ssd\downloads\MAU HT 20\PCG kandidat\output\highest-"+ DateTime.Now.ToString("MMddHHmmss") + ".txt";
      //   string path = @"C:\github\Evolved CA\Evolved-CA\Evolved CA\Evolved-CA\Assets\output\output-" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + ".txt";
-      //  string path2 = @"C:\Users\Adel\Documents\GitHub\Evolved-cellular-automata\Assets\Adlers outputs" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + ".txt";
-        File.WriteAllText(path1, sb1.ToString());
+        string path2 = @"C:\Users\Adel\Documents\GitHub\Evolved-cellular-automata\Assets\output\Adlers outputs-" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + ".txt";
+        File.WriteAllText(path2, sb1.ToString());
      //   File.WriteAllText(path2, sb2.ToString());
     //    File.WriteAllText(path3, sb3.ToString());
 
