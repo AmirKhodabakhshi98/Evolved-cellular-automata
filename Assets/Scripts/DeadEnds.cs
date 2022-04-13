@@ -22,11 +22,11 @@ public class DeadEnds : MonoBehaviour
                 // destX = level[col, 0];
                 // destY = level[0, row];
                 if (level[row, col] == 1)
-                {   
-                    pathLengths[row , col] = LongestShortestPath.shortestPath(level, row, col);
+                {
+                    pathLengths[row, col] = LongestShortestPath.shortestPath(level, row, col);
                 }
+               // else pathLengths[row, col] = -1;
             }
-
         }
 
         int nbrOfDeadEnds = 0;
@@ -48,7 +48,10 @@ public class DeadEnds : MonoBehaviour
     private static bool isDeadEnd(int[,] pathLengths, int row, int col)
     {
         int currPathLength = pathLengths[row, col];
-
+        if(currPathLength <= 0)
+        {
+            return false;
+        }
         //check left neighbour
         if(row-1 >0 && pathLengths[row-1, col] > currPathLength)
         {
