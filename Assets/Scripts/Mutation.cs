@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Mutation : MonoBehaviour
 {
-  //  private static float mutationProbability = 1f/512f;
-    private static float mutationProbability = 0.05f;
+    private static float mutationProbability = 1f/512f;
+   // private static float mutationProbability = 0.05f;
 
 
 

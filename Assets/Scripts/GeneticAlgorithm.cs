@@ -15,8 +15,8 @@ public class GeneticAlgorithm
     public float crossoverProbability = 0.6f;
     public int elitismSize = 6;
     public int tournamentSize = 2;
-    public int startingStatesAmount = 1;
-    public int convergenceGenerations = 1000;
+    public int startingStatesAmount = 10;
+    public int convergenceGenerations = 200;
     public float convergenceDifference=1;
 
 
@@ -43,6 +43,7 @@ public class GeneticAlgorithm
         StringBuilder sb1 = new StringBuilder();
         StringBuilder sb2 = new StringBuilder();
         StringBuilder sb3 = new StringBuilder();
+        StringBuilder sb4 = new StringBuilder();
         CellularAutomata[] population = GenerateLevels();
         ;
 
@@ -57,7 +58,7 @@ public class GeneticAlgorithm
             int convergenceCounter = 0;
             float prevfitness=0;
 
-            while (generations < maxGenerations && currFittest<maxfitness)
+            while (generations < maxGenerations)
             {
                 population = GenerateCellularAutomataLevels(population, startingStateCollection);   
                 population = FitnessFunction.scoreLevels(population);   
@@ -82,46 +83,49 @@ public class GeneticAlgorithm
 
                 generations++;
                 float avg = 0;
-             //   for(int i=0; i<population.Length; i++)
-            //    {
-             //       avg += (int)population[i].getFitness();
-             //   }
-            //    avg = avg / populationSize;
-            //    sb2.Append((int)Math.Round(avg) + "\n");
-           //     sb3.Append(population[0].getFitness() + "\n");
-            //    sb3.Append("gen: " + generations + "\n" + "rules: ");
+                for(int i=0; i<population.Length; i++)
+                {
+                    avg += (int)population[i].getFitness();
+                }
+                avg = avg / populationSize;
+                sb2.Append((int)Math.Round(avg) + "\n");
+                sb3.Append(population[0].getFitness() + "\n");
+             //   sb3.Append("gen: " + generations + "\n" + "rules: ");
+                sb4.Append(population[49].getFitness() + "\n");
             }
             sb1.Append("mostFit: " + population[0].getFitness() + " gen: " + generations + " converg: " + convergenceCounter + "\n");
 
         }
-   
-        
-        
+
+
+
 
         //   new Visualizer(topLevel[0]);
 
-    //    int[] rules = population[0].getRules();
-     //   for(int i=0; i < 512; i++)
-    //    {
-     //       sb3.Append (rules[i] + ", ");
-            
-    //    }
-    //    sb3.Append("tourney size: " + tournamentSize);
-    //    sb3.Append("elite size: " + elitismSize);
-    //    sb3.Append("pop size: " + populationSize);
-    //    sb3.Append("CA iterations " + cellularAutomataIterations);
-    //    sb3.Append("starting state amounts " + startingStatesAmount);
+        //    int[] rules = population[0].getRules();
+        //   for(int i=0; i < 512; i++)
+        //    {
+        //       sb3.Append (rules[i] + ", ");
 
-    
+        //    }
+        //    sb3.Append("tourney size: " + tournamentSize);
+        //    sb3.Append("elite size: " + elitismSize);
+        //    sb3.Append("pop size: " + populationSize);
+        //    sb3.Append("CA iterations " + cellularAutomataIterations);
+        //    sb3.Append("starting state amounts " + startingStatesAmount);
+
+        sb1.Append(Evaluator.evaluateLevels(population[0]));
 
         string path1 = @"E:\backup ssd\downloads\MAU HT 20\PCG kandidat\output\detailsAllRuns-"+ DateTime.Now.ToString("MMddHHmmss") + ".txt";
-     //   string path2 = @"E:\backup ssd\downloads\MAU HT 20\PCG kandidat\output\avg-"+ DateTime.Now.ToString("MMddHHmmss") + ".txt";
-     //   string path3 = @"E:\backup ssd\downloads\MAU HT 20\PCG kandidat\output\highest-"+ DateTime.Now.ToString("MMddHHmmss") + ".txt";
+        string path2 = @"E:\backup ssd\downloads\MAU HT 20\PCG kandidat\output\avg-"+ DateTime.Now.ToString("MMddHHmmss") + ".txt";
+        string path3 = @"E:\backup ssd\downloads\MAU HT 20\PCG kandidat\output\highest-"+ DateTime.Now.ToString("MMddHHmmss") + ".txt";
+        string path4 = @"E:\backup ssd\downloads\MAU HT 20\PCG kandidat\output\lowest-"+ DateTime.Now.ToString("MMddHHmmss") + ".txt";
      //   string path = @"C:\github\Evolved CA\Evolved-CA\Evolved CA\Evolved-CA\Assets\output\output-" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + ".txt";
       //  string path2 = @"C:\Users\Adel\Documents\GitHub\Evolved-cellular-automata\Assets\Adlers outputs" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + ".txt";
         File.WriteAllText(path1, sb1.ToString());
-     //   File.WriteAllText(path2, sb2.ToString());
-    //    File.WriteAllText(path3, sb3.ToString());
+        File.WriteAllText(path2, sb2.ToString());
+        File.WriteAllText(path3, sb3.ToString());
+        File.WriteAllText(path4, sb4.ToString());
 
         return population;
 

@@ -21,12 +21,18 @@ public class FitnessFunction : MonoBehaviour
         for(int i=0; i<population.Length; i++)
         {
             float score = 0;
+            int nbrOfDeadEnds = 0;
+            int on = 0;
+
             //  score += PercentageOn(population[i].getLevels());
             for (int j = 0; j < population[i].getLevels().Length; j++) { 
 
                 score += LongestShortestPath.shortestPath(population[i].getLevels()[j], 29 ,29);
+                
                 score += DeadEnds.deadEnds(population[i].getLevels()[j]);
 
+             //   score += (float) nbrOfDeadEnds;
+                // score += on;
             }
             population[i].setFitness(score);//ändra
         }

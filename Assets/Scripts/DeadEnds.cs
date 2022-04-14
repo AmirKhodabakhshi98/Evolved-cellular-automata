@@ -14,6 +14,7 @@ public class DeadEnds : MonoBehaviour
         //int destX;
         //int destY;
         int[,] pathLengths = new int[level.GetLength(0), level.GetLength(1)];
+     //   int on=0;
 
         for (int row = 0; row < level.GetLength(0); row++)
         {   
@@ -24,6 +25,7 @@ public class DeadEnds : MonoBehaviour
                 if (level[row, col] == 1)
                 {
                     pathLengths[row, col] = LongestShortestPath.shortestPath(level, row, col);
+                   // on++;
                 }
                // else pathLengths[row, col] = -1;
             }
@@ -48,6 +50,9 @@ public class DeadEnds : MonoBehaviour
     private static bool isDeadEnd(int[,] pathLengths, int row, int col)
     {
         int currPathLength = pathLengths[row, col];
+
+        //utan denna if satsen uppstod nån bugg där non-traversable celler hade 0 som currpathlength och de gynnades typ.
+        //extra check så att celler utan en väg till start inte räknas.
         if(currPathLength <= 0)
         {
             return false;
