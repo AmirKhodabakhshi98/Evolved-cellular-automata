@@ -1,137 +1,81 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class Visualizer : MonoBehaviour
 {
-  //  public int width;
-   // public int height;
+  
+    public GameObject traversablePrefab;
+    public GameObject nonTraversablePrefab;
+    public GameObject startEndPrefab;
     
     int[] grid;
     int[,] grid2d;
-
+    
+    int side = 30;
+    public int[,] altGrid;
     int[][,] lvls;
-    int iterator = 0;
+    int iterator;
     void Start()
     {
         iterator = 0;
-        //grid2d = StartingStateGenerator.getStartingState();
         GeneticAlgorithm ga = new GeneticAlgorithm();
-        CellularAutomata[] ca = ga.test(1);
+        CellularAutomata[] ca = ga.EvolveCellularAutomata(1);
         lvls = ca[0].getLevels();
-
-  
-        
         grid2d = lvls[iterator];
-    //    grid = StartingStateGenerator.getStartingState();
         DrawCA(grid2d);
-
-
-    //    generateMap();
     }
 
 
     private void Update()
     {
-        if (Input.GetKeyDown("space"))
-        {
-            iterator++;
-            if (iterator >= lvls.Length)
-            {
-                iterator = 0;
-            }
+        if (Input.GetKeyDown("space")) {
+            iterator = (iterator + 1) % lvls.Length;
             DrawCA(lvls[iterator]);
-
         }
+    }
 
+    private void clearGrid() {
+        foreach (Transform child in transform) {
+            Destroy(child.gameObject);
+        }
     }
     
-    private void generateMap()
-    {
-   //     grid2d = new int[width, height];
-        
-    }
-
-
-
-
-
-
-    public int[,] convertArrayTo2D(int []array)
-    {
-       
-        int size = array.Length;
-        int sideLength = (int)Mathf.Sqrt(size);
-        int[,] Array2d = new int[sideLength,sideLength];
-        int count = 0;
-        for (int i = 0; i < sideLength; i++)
-        {
-            for(int j = 0; j < sideLength; j++)
-            {
-                Array2d[i, j] = array[count];
-                count++;
-            }
-        } return Array2d;
-    }
-    /*
-    void OnDrawGizmos()
-    {
-        if (grid2d != null)
-        {   grid2d = convertArrayTo2D(grid);
-            for(int x = 0; x<width; x++)
-            {
-                for(int y = 0; y<height; y++)
-                {
-                    
-                    Gizmos.color = (grid2d[x, y] == 1) ? Color.black : Color.red;
-                    Vector3 position = new Vector3(-width / 2 + x + .5f, -height / 2 + y + .5f, 0);
-                    Gizmos.DrawCube(position, Vector3.one);
-                }
-            }
-        }
-    }
-    */
-    int side = 30;
-    public Sprite sprite;
-    public int[,] altGrid;
-    void DrawCA(int[,] input)
-    {
-
+ 
+    void DrawCA(int[,] input) {
+        clearGrid();
         altGrid = new int[side, side];
-        for(int i=0; i<side;  i++)
-        {
-            for(int j=0; j<side; j++)
-            {
-                if ((i == 0 && j == 0) || (i==side-1 && j==side-1))
-                {
+        for(int i=0; i<side;  i++) {
+            for(int j=0; j<side; j++) {
+                if ((i == 0 && j == 0) || (i==side-1 && j==side-1)) {
                     altGrid[i, j] = input[i, j];
                     SpawnSpecial(i, j);
                 }
-                else
-                {
+                else {
                     altGrid[i, j] = input[i, j];
                     SpawnTile(i, j, altGrid[i, j]);
-                }
-                }
+                } 
             }
+        }
     }
 
-    private void SpawnSpecial(int x, int y)
-    {
-        GameObject g = new GameObject("X: " + x + "Y:" + y);
-        g.transform.position = new Vector3(x - (side - 0.5f), y - (side - 0.5f));
-        var s = g.AddComponent<SpriteRenderer>();
-        s.sprite = sprite;
-        s.color = new Color(0, 1, 0,1);
+    private void SpawnSpecial(int x, int y) {
+        GameObject tile = startEndPrefab;
+        Vector3 position = new Vector3(x, y, 0);
+        Instantiate(tile, position, quaternion.identity, transform);
     }
 
-    private void SpawnTile(int x, int y, int value)
-    {
-        GameObject g = new GameObject("X: " + x + "Y:" + y);
-        g.transform.position = new Vector3(x - (side - 0.5f), y - (side - 0.5f));
-        var s = g.AddComponent<SpriteRenderer>();
-        s.sprite = sprite;
-        s.color = new Color(value, value, value);
+    private void SpawnTile(int x, int y, int value) {
+        GameObject tile;
+        if (value==1) {
+            tile = traversablePrefab;
+        }
+        else {
+            tile = nonTraversablePrefab;
+        }
+        Vector3 position = new Vector3(x, y, 0);
+        Instantiate(tile, position, quaternion.identity, transform);
     }
 }

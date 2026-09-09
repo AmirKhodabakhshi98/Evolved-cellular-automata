@@ -10,19 +10,16 @@ public class Crossover : MonoBehaviour
     //takes 2 candidates and performs onepoint crossover. Returns unchanged candidates if random roll fails.
     public static (int[] child1, int[] child2) SinglePointCrossover(int[] candidate1, int[]candidate2, float crossoverProbability)
     {
-        float rndValue = Random.value; //kolla så decimalr o sånt nt ställer till d vid slumpgenerering
+        float rndValue = Random.value;
 
         //return unchanged candidates if random value isnt within crossoverProbability
         if(rndValue > crossoverProbability)
         {
             return (candidate1, candidate2);
         }
-
         int length = candidate1.Length;
-
-
-        int crossoverPoint = Random.Range(2, length-1);  //if crossoverpoint is 0 then children will just be copies of parents.
-
+        //if crossoverpoint is 0 then children will just be copies of parents.
+        int crossoverPoint = Random.Range(2, length-1);  
 
 
         int[] child1 = new int[length];
@@ -40,26 +37,7 @@ public class Crossover : MonoBehaviour
             child1[i] = candidate2[i];
             child2[i] = candidate1[i];
         }
-
-
+        
         return (child1, child2);
-
     }
-
-
-
-
-
-
-
-
-    
-
-    
-
-
-
-
-
-
 }

@@ -5,59 +5,16 @@ using UnityEngine;
 
 public class Mutation : MonoBehaviour
 {
-  //  private static float mutationProbability = 1f/512f;
-    private static float mutationProbability = 0.05f;
-
-
-
-
-    //runs through entire population and mutates based on a certain probability
-    //startAt variable to skip first elite members 
-    public static CellularAutomata Mutate(CellularAutomata candidate)
-    {
-
-            //loop through each rule array
-            for (int j = 1; j < candidate.getRuleSize()-1; j++)
-            {
-                float randomValue = Random.Range(0f, 1f);
-
-                // the chance will be 1/512
-                if (randomValue <= mutationProbability)
-                {
-                    candidate.flipRuleAtPos(j);
-                }
-            }
-
-        return candidate;
-      
-    }
-
-
-
-
-    /*
-    //runs through entire population and mutates based on a certain probability
-    //startAt variable to skip first elite members 
-    public static void Mutate(CellularAutomata[] pop, int startAt)
-    {
-      
- 
-
-        //loop entire population
-        for (int i = startAt; i < pop.Length; i++)
-        {
-            //loop through each rule array
-            for(int j=0; j<CellularAutomata.ruleSize; j++)
-            {
-                float randomValue = Random.Range(0f, 1f);
-               
-                // the chance will be 1/512
-                if (randomValue <= mutationRate)
-                {
-                    pop[i].flipRuleAtPos(j);
-                }
+    private static float mutationProbability = 1f/512f;
+    
+    //Mutates(flips) each rule cell based on above probability
+    public static CellularAutomata Mutate(CellularAutomata candidate) {
+        for (int j = 1; j < candidate.getRuleSize()-1; j++){
+            float randomValue = Random.Range(0f, 1f);
+            if (randomValue <= mutationProbability){
+                candidate.flipRuleAtPos(j);
             }
         }
+        return candidate;
     }
-    */
 }

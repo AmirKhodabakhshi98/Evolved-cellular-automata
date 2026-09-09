@@ -11,29 +11,18 @@ public class CellularAutomata : System.IComparable<CellularAutomata>
     private int[] rules;
     private int[][,] levels;
    
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-     //   GetRandomRules();
-
-    }
-    public CellularAutomata(CellularAutomata ca)
-    {
+    
+    public CellularAutomata(CellularAutomata ca) {
         this.fitnessScore = ca.getFitness();
         this.rules = new int[ruleSize];
         this.levels = new int[ca.getLevels().Length][,];
         Array.Copy(ca.getRules(), this.rules, ca.getRules().Length);
         Array.Copy(ca.getLevels(), this.levels, ca.getLevels().Length);
-        
-
     }
 
     
     public CellularAutomata(){
         this.rules = GetRandomRules();
-        
     }
 
     public int getRuleSize()
@@ -70,17 +59,18 @@ public class CellularAutomata : System.IComparable<CellularAutomata>
     }
 
     //changes rule
-    public void flipRuleAtPos(int pos)
-    {
+    public void flipRuleAtPos(int pos) {
         if (rules[pos] == 1)
         {
             rules[pos] = 0;
         }
-        else { rules[pos] = 1; }
+        else
+        {
+            rules[pos] = 1;
+        }
     }
 
-    public void setFitness(float score)
-    {
+    public void setFitness(float score) {
         fitnessScore = score;
     }
 
@@ -88,11 +78,7 @@ public class CellularAutomata : System.IComparable<CellularAutomata>
     {
         return fitnessScore;
     }
-
-    public void addScore(float score)
-    {
-        fitnessScore += score;
-    }
+    
 
     public int CompareTo(CellularAutomata other)
     {
@@ -106,7 +92,6 @@ public class CellularAutomata : System.IComparable<CellularAutomata>
         }
 
         return 0;
-
     }
 
 
@@ -137,14 +122,12 @@ public class CellularAutomata : System.IComparable<CellularAutomata>
             {
                 for(int j =0; j < grid.GetLength(1); j++)
                 {
-
-                
-                if (shouldCellBeOn(grid, i, j, rules))
-                {
-                    temp[i,j] = 1;
-                }
-                else { 
-                    temp[i,j] = 0; }
+                    if (shouldCellBeOn(grid, i, j, rules))
+                    {
+                        temp[i,j] = 1;
+                    }
+                    else { 
+                        temp[i,j] = 0; }
                 }
             }
             grid = temp;
@@ -152,8 +135,7 @@ public class CellularAutomata : System.IComparable<CellularAutomata>
 
         temp[0,0] = 2;
         temp[grid.GetLength(0)-1, grid.GetLength(1)-1] = 3;
-
-
+        
         return grid;
     }
 
@@ -163,36 +145,24 @@ public class CellularAutomata : System.IComparable<CellularAutomata>
 
 
      //checks Moore neighbours of a cell and compares with rule array, returns true if cell state should be on.
-     bool shouldCellBeOn(int[,] grid, int i, int j, int[] rules)
-    {
+     bool shouldCellBeOn(int[,] grid, int i, int j, int[] rules) {
         int[] neighbours = getNeighbours(grid, i, j );
-
         int value = 0;
-
-
-        for(int n = 0; n<neighbours.Length; n++)
-        {
-            if (neighbours[n] == 1)
-            {
+        for(int n = 0; n<neighbours.Length; n++) {
+            if (neighbours[n] == 1) {
                 value += (int)Mathf.Pow(2, 8-n);
             }
-
         }
-
-        
         if(rules[value] == 1)
         {
             return true;
         }
-
         return false;
-
     }
 
     //returns an array of the Moore neighbour values of a cell
     private int[] getNeighbours(int[,] grid, int i, int j)
     {
-        int size = grid.Length;
         int sideLength = grid.GetLength(0);
         int[] neighbours = new int[9];
         
@@ -227,44 +197,7 @@ public class CellularAutomata : System.IComparable<CellularAutomata>
             }
             p++;
         }
-
         
-        /*
-
-        for(int i = -1; i<=1; i++)
-        {
-            for(int j = -1); j <= 1; j++){ 
-            if (centerPosition - sideLength + i > 0)
-            {
-                neighbours[p] = grid[centerPosition - sideLength + i];
-            }
-            p++;
-        }
-    }
-
-        for(int i=-1; i<=1; i++)
-        {
-            if(centerPosition+i>0 && centerPosition+i < size)
-            {
-                neighbours[p] = grid[centerPosition + i];
-            }
-            p++;
-        }
-
-        for(int i=-1; i<=1; i++)
-        {
-            if(centerPosition+sideLength+i < size)
-            {
-                neighbours[p] = grid[centerPosition + sideLength + i];
-            }
-            p++;
-        }
-        */
-
         return neighbours;
-
     }
-
-
-
 }

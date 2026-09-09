@@ -4,8 +4,6 @@ using UnityEngine;
 
 public static class StartingStateGenerator 
 {
-     
-    public static int gridSize = 900;
     public static int gridSide = 30;
     public static float chanceOfCellOn = 0.5F;
 
@@ -22,21 +20,14 @@ public static class StartingStateGenerator
                 }
                 }
             }
-
         startingState[0, 0] = 2;
         startingState[gridSide - 1, gridSide - 1] = 3;
-
-
-        //   Debug.Log(string.Join(", ", startingState));
-
-
         return startingState;
         }
 
-
+    //returns a population of starting states
     public static int[][,] getStartingStateCollection(int startingStatesAmount)
     {
-        
         int[][,] startingStates = new int[startingStatesAmount][,];
         for(int i=0; i<startingStatesAmount; i++)
         {
@@ -48,17 +39,11 @@ public static class StartingStateGenerator
     //generates a random number between 0..1(inclusive), if the number is below RandomChanceOn, returns true
     private static bool randomChanceOn()
     {
-       
         float rndNbr = Random.value;
-        
         if (rndNbr<=chanceOfCellOn)
         {
             return true;
         }
         return false;
-
     }
-
-
-
 }
