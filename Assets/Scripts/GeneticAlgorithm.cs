@@ -17,8 +17,9 @@ public class GeneticAlgorithm
     public int startingStatesAmount = 10;
     public int convergenceGenerations = 300;
     public float convergenceDifference=1;
-
     private SaveArray saveArray = new SaveArray();
+
+    
     public CellularAutomata[] EvolveCellularAutomata(int nbrOfRuns)
     {
         CellularAutomata[] population = GenerateLevels();
@@ -39,13 +40,10 @@ public class GeneticAlgorithm
                 
                 if (generations==0)
                 {
-                    
-                    saveArray.printArray(population[0].getRules(), "firstCA");
                     for (var i = 0; i < startingStateCollection.Length; i++)
                     {
                         saveArray.printArray(startingStateCollection[0],"SS"+i);    
                     }
-                    
                 }
 
                 population = GenerateNewPop(population);

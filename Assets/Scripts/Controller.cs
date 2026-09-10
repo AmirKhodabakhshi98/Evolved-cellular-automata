@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 
-public class Visualizer : MonoBehaviour
+public class Controller : MonoBehaviour
 {
   
     public GameObject traversablePrefab;
@@ -13,71 +13,57 @@ public class Visualizer : MonoBehaviour
     
     int[] grid;
     int[,] grid2d;
-    
     int side = 30;
     public int[,] altGrid;
     int[][,] lvls;
-    [Range(0,5)]
-    public int iterator = 0;
+    private int iterator = 0;
+    GeneticAlgorithm ga;
+
     
+    [Tooltip("default settings (1000 maxGenerations) gives best results, but can take 20-30min")]
+    public int maxGenerations = 1000;
+    public int populationSize = 50;
+    public int cellularAutomataIterations = 5;
+    public float crossoverProbability = 0.6f;
+    public int elitismSize = 6;
+    public int tournamentSize = 2;
+    public int startingStatesAmount = 10;
+    public int convergenceGenerations = 300;
+    public float convergenceDifference=1;
     
-    
-    SaveArray sa = new SaveArray();
-    private int[][,] startingStates;
-    private int[] firstCA;
-    public bool firstCATrue = true;
-    private int[] bestCA;
-    CellularAutomata ca;
-    [Range(0,9)]
-    public int ssIndex = 3;
     void Start()
     {
-        
-        string s = "SS";
-        startingStates = new int[10][,];
-        for (int i = 0; i < 10; i++)
-        {
-            startingStates[i] = sa.LoadArray2D(s + i );
-        }
-
-        if (firstCATrue)
-        {
-            firstCA = sa.LoadArray("firstCA");
-
-        }
-        else
-        {
-            firstCA = sa.LoadArray("BestCA");
-
-        }
-
-        // GeneticAlgorithm ga = new GeneticAlgorithm();
-        // CellularAutomata[] ca = ga.EvolveCellularAutomata(1);
-        // lvls = ca[0].getLevels();
-        // grid2d = lvls[iterator];
-        // DrawCA(grid2d);
-        ca= new CellularAutomata(firstCA);
-        
-        grid2d = ca.applyRulesForIterations(startingStates[ssIndex],firstCA,iterator);
-        DrawCA(grid2d);
+         ga = new GeneticAlgorithm();
+         initGA();
+         CellularAutomata[] ca = ga.EvolveCellularAutomata(1);
+         lvls = ca[0].getLevels();
+         grid2d = lvls[iterator];
+         DrawCA(grid2d);
     }
 
 
     private void Update()
     {
-        /*
-        if (Input.GetKeyDown("space")) {
+        if (Input.GetKeyDown("space") || Input.GetMouseButtonDown(0)) {
             iterator = (iterator + 1) % lvls.Length;
             DrawCA(lvls[iterator]);
-        }*/
-        if (Input.GetKeyDown("space") || Input.GetMouseButtonDown(0)) {
-            iterator = (iterator + 1) % 6;
-            Debug.Log(iterator);
-            DrawCA(ca.applyRulesForIterations(startingStates[ssIndex],firstCA,iterator));
         }
-        
     }
 
+    private void initGA()
+    {
+    
+    ga.maxGenerations = maxGenerations;
+    ga.populationSize = populationSize;
+    ga.cellularAutomataIterations = cellularAutomataIterations;
+    ga.crossoverProbability = crossoverProbability;
+    ga.elitismSize = elitismSize;
+    ga.tournamentSize = tournamentSize;
+    ga.startingStatesAmount = startingStatesAmount;
+    ga.convergenceGenerations = convergenceGenerations;
+    ga.convergenceDifference= convergenceDifference;
+    }
+    
     private void clearGrid() {
         foreach (Transform child in transform) {
             Destroy(child.gameObject);
