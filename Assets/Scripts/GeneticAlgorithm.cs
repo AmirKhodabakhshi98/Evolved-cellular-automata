@@ -38,14 +38,6 @@ public class GeneticAlgorithm
                 population = FitnessFunction.scoreLevels(population);   
                 Array.Sort(population);
                 
-                if (generations==0)
-                {
-                    for (var i = 0; i < startingStateCollection.Length; i++)
-                    {
-                        saveArray.printArray(startingStateCollection[0],"SS"+i);    
-                    }
-                }
-
                 population = GenerateNewPop(population);
                 currFittest = (int) population[0].getFitness();
                 
@@ -64,7 +56,6 @@ public class GeneticAlgorithm
                 
             }
         } 
-        saveArray.printArray(population[0].getRules(), "BestCA");
         return population;
     }
     

@@ -5,6 +5,7 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 
+//Optional helper class to save/load level states or cellular automata rules.
 public class SaveArray
 {
 
