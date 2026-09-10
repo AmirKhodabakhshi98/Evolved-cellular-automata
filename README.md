@@ -25,8 +25,9 @@ The results demonstrate that it is possible to evolve CA rules capable of transf
 
 The repository includes an artefact demonstrating an evolved cellular automaton iteratively transforming a random starting state into a generated level.
 
-> **Example of an evolved cellular automata applied over a starting state for 5 iterations:** [*Upload/embed video of the evolved CA iterating over a starting state here.*](https://github.com/user-attachments/assets/0668b61a-694d-4940-93a5-72ee97b8f9e4
-)
+> **Example of an evolved cellular automaton applied over a starting state for 5 iterations:**
+
+https://github.com/user-attachments/assets/0668b61a-694d-4940-93a5-72ee97b8f9e4
 
 ## Technologies & Concepts
 
