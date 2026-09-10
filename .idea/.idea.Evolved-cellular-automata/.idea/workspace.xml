@@ -11,23 +11,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3875e835-0827-490f-9cb2-250d0d13acfb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Evolved-cellular-automata/.idea/indexLayout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Evolved-cellular-automata/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Evolved-cellular-automata/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Evolved-cellular-automata/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Evolved-cellular-automata/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/CellularAutomata.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CellularAutomata.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Crossover.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Crossover.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DeadEnds.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DeadEnds.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Evaluator.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Evaluator.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/FitnessFunction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FitnessFunction.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GeneticAlgorithm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GeneticAlgorithm.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LongestShortestPath.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LongestShortestPath.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Mutation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Mutation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Selection.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Selection.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SaveState.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SaveState.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/StartingStateGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/StartingStateGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TournamentSelection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TournamentSelection.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Visualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Visualizer.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,9 +33,9 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ad50157ee00e45cdb3c8bd67012f8804157200/13/89da3ba8/Color.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea01e77be99618395f448b16bd7cc2bd4248bd9e5d8474964b2d97f39c5d74/System.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Uni.unity" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/a.unity" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Immediate Window" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="McpProjectServerCommands">
     <commands />
@@ -54,61 +44,64 @@
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
       <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0" />
-      <entry key="S10" value="1.0" />
-      <entry key="S30" value="1.0" />
-      <entry key="S60" value="1.0" />
-      <entry key="M2" value="1.0000000000000022" />
-      <entry key="M5" value="1.0000048562136916" />
-      <entry key="M10" value="1.0071840369820892" />
-      <entry key="M15" value="1.106983015531931" />
-      <entry key="M30" value="3.3804910982959555" />
-      <entry key="H1" value="14.50115391573052" />
-      <entry key="H2" value="35.89723096598741" />
-      <entry key="H4" value="59.575035669872754" />
-      <entry key="D1" value="94.3849009749288" />
-      <entry key="W1" value="102.55732924652312" />
+      <entry key="MS500" value="1.0014006276509198" />
+      <entry key="S2" value="1.5218090184474085" />
+      <entry key="S5" value="2.7620058224619717" />
+      <entry key="S10" value="3.652402398879384" />
+      <entry key="S30" value="4.518360947724694" />
+      <entry key="S60" value="5.044715184357694" />
+      <entry key="M2" value="6.12006209208085" />
+      <entry key="M5" value="13.364121130339573" />
+      <entry key="M10" value="32.57763961318403" />
+      <entry key="M15" value="50.25832475079075" />
+      <entry key="M30" value="88.57374715724296" />
+      <entry key="H1" value="133.70437644989775" />
+      <entry key="H2" value="182.9471438984701" />
+      <entry key="H4" value="229.8473521512901" />
+      <entry key="D1" value="297.86508708757214" />
+      <entry key="W1" value="314.11567376624396" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="0.0" />
-      <entry key="S5" value="0.0" />
-      <entry key="S10" value="1.0478905677999487E-181" />
-      <entry key="S30" value="4.773947595094443E-61" />
-      <entry key="S60" value="7.637074714922294E-31" />
-      <entry key="M2" value="1.106266634529628E-15" />
-      <entry key="M5" value="1.5346678415966058E-6" />
-      <entry key="M10" value="0.0021004912206071705" />
-      <entry key="M15" value="0.03145305174518164" />
-      <entry key="M30" value="0.7008964125170293" />
-      <entry key="H1" value="4.0030886110634265" />
-      <entry key="H2" value="10.43559316957401" />
-      <entry key="H4" value="17.589314263651623" />
-      <entry key="D1" value="28.10139629502441" />
-      <entry key="W1" value="30.5652519828318" />
+      <entry key="MS500" value="4.705128902580695E-108" />
+      <entry key="S2" value="1.4732781917287521E-27" />
+      <entry key="S5" value="1.9573067763417424E-11" />
+      <entry key="S10" value="5.748950270381219E-6" />
+      <entry key="S30" value="0.03417917538333324" />
+      <entry key="S60" value="0.3207679173075083" />
+      <entry key="M2" value="1.1832047755378754" />
+      <entry key="M5" value="5.282443973799515" />
+      <entry key="M10" value="13.412106679634258" />
+      <entry key="M15" value="20.024740215112317" />
+      <entry key="M30" value="32.72900277405528" />
+      <entry key="H1" value="45.94464751541009" />
+      <entry key="H2" value="59.74989372604457" />
+      <entry key="H4" value="72.99102603744424" />
+      <entry key="D1" value="92.47525907188809" />
+      <entry key="W1" value="97.16628739464515" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="8.442746399490869E-4" />
-      <entry key="MS500" value="0.24282687388540833" />
-      <entry key="S2" value="0.7019791082857704" />
-      <entry key="S5" value="0.8680198861524507" />
-      <entry key="S10" value="0.9316758482178502" />
-      <entry key="S30" value="0.9766859624641575" />
-      <entry key="S60" value="0.9882742344431314" />
-      <entry key="M2" value="0.9941198290161695" />
-      <entry key="M5" value="0.9976501530869548" />
-      <entry key="M10" value="1.0081005662526203" />
-      <entry key="M15" value="1.1375971992097422" />
-      <entry key="M30" value="4.080403777806348" />
-      <entry key="H1" value="18.502359477187582" />
-      <entry key="H2" value="46.33044343093327" />
-      <entry key="H4" value="77.16228846511301" />
-      <entry key="D1" value="122.48572249281553" />
-      <entry key="W1" value="133.12249102559534" />
+      <entry key="MS100" value="5.269669123557347E-4" />
+      <entry key="MS500" value="0.22224437818391649" />
+      <entry key="S2" value="1.181924123529933" />
+      <entry key="S5" value="2.5798608682734154" />
+      <entry key="S10" value="3.5458282730740445" />
+      <entry key="S30" value="4.5096206871811555" />
+      <entry key="S60" value="5.332233385612523" />
+      <entry key="M2" value="7.2709698361452295" />
+      <entry key="M5" value="18.610378589949857" />
+      <entry key="M10" value="45.95031692384159" />
+      <entry key="M15" value="70.24511259986284" />
+      <entry key="M30" value="121.27188558454382" />
+      <entry key="H1" value="179.62693075010202" />
+      <entry key="H2" value="242.68247211298743" />
+      <entry key="H4" value="302.82939941369796" />
+      <entry key="D1" value="390.33842148226955" />
+      <entry key="W1" value="411.28167110778304" />
     </decayedShown>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4,
@@ -119,32 +112,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "XThreadsFramesViewSplitterKey": "0.35358256",
-    "cidr.known.project.marker": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "amirs-fattiga-branch-som-inte-funkar",
-    "junie.onboarding.icon.badge.shown": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "to.speed.mode.migration.done": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.25077882&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;amirs-fattiga-branch-som-inte-funkar&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.2.7f1\Editor\Unity.exe" />
@@ -166,15 +159,13 @@
       <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" useMixedMode="false" ignored-value-for-modified-check="26924">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" useMixedMode="false">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="26924" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
-        <list>
-          <MonoRuntime />
-        </list>
+        <list />
       </option>
       <option name="selectedOptions">
         <list />

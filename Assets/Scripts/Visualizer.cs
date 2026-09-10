@@ -17,24 +17,65 @@ public class Visualizer : MonoBehaviour
     int side = 30;
     public int[,] altGrid;
     int[][,] lvls;
-    int iterator;
+    [Range(0,5)]
+    public int iterator = 0;
+    
+    
+    
+    SaveArray sa = new SaveArray();
+    private int[][,] startingStates;
+    private int[] firstCA;
+    public bool firstCATrue = true;
+    private int[] bestCA;
+    CellularAutomata ca;
+    [Range(0,9)]
+    public int ssIndex = 3;
     void Start()
     {
-        iterator = 0;
-        GeneticAlgorithm ga = new GeneticAlgorithm();
-        CellularAutomata[] ca = ga.EvolveCellularAutomata(1);
-        lvls = ca[0].getLevels();
-        grid2d = lvls[iterator];
+        
+        string s = "SS";
+        startingStates = new int[10][,];
+        for (int i = 0; i < 10; i++)
+        {
+            startingStates[i] = sa.LoadArray2D(s + i );
+        }
+
+        if (firstCATrue)
+        {
+            firstCA = sa.LoadArray("firstCA");
+
+        }
+        else
+        {
+            firstCA = sa.LoadArray("BestCA");
+
+        }
+
+        // GeneticAlgorithm ga = new GeneticAlgorithm();
+        // CellularAutomata[] ca = ga.EvolveCellularAutomata(1);
+        // lvls = ca[0].getLevels();
+        // grid2d = lvls[iterator];
+        // DrawCA(grid2d);
+        ca= new CellularAutomata(firstCA);
+        
+        grid2d = ca.applyRulesForIterations(startingStates[ssIndex],firstCA,iterator);
         DrawCA(grid2d);
     }
 
 
     private void Update()
     {
+        /*
         if (Input.GetKeyDown("space")) {
             iterator = (iterator + 1) % lvls.Length;
             DrawCA(lvls[iterator]);
+        }*/
+        if (Input.GetKeyDown("space") || Input.GetMouseButtonDown(0)) {
+            iterator = (iterator + 1) % 6;
+            Debug.Log(iterator);
+            DrawCA(ca.applyRulesForIterations(startingStates[ssIndex],firstCA,iterator));
         }
+        
     }
 
     private void clearGrid() {

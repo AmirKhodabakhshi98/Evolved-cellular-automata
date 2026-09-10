@@ -25,6 +25,10 @@ public class CellularAutomata : System.IComparable<CellularAutomata>
         this.rules = GetRandomRules();
     }
 
+    public CellularAutomata(int[]r ){
+        rules = r;
+    }
+    
     public int getRuleSize()
     {
         return this.ruleSize;
@@ -34,9 +38,7 @@ public class CellularAutomata : System.IComparable<CellularAutomata>
     {
         return levels;
     }
-
-
-
+    
     //takes in starting states and runs this instances CA rules on them
     public void setLevels(int[][,] startingStates, int iterations)
     {
@@ -113,7 +115,7 @@ public class CellularAutomata : System.IComparable<CellularAutomata>
 
 
     //Applies CA rules on the given grid for specified number of iterations. 
-    int[,] applyRulesForIterations(int[,] grid, int[] rules, int iterations)
+    public int[,] applyRulesForIterations(int[,] grid, int[] rules, int iterations)
     {
         int[,] temp = new int[grid.GetLength(0),grid.GetLength(1)];
          

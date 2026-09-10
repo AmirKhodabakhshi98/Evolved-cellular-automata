@@ -8,7 +8,7 @@ using UnityEngine;
 public class GeneticAlgorithm 
 {
 
-    public int maxGenerations = 1;
+    public int maxGenerations = 1000;
     public int populationSize = 50;
     public int cellularAutomataIterations = 5;
     public float crossoverProbability = 0.6f;
@@ -18,6 +18,7 @@ public class GeneticAlgorithm
     public int convergenceGenerations = 300;
     public float convergenceDifference=1;
 
+    private SaveArray saveArray = new SaveArray();
     public CellularAutomata[] EvolveCellularAutomata(int nbrOfRuns)
     {
         CellularAutomata[] population = GenerateLevels();
@@ -35,6 +36,18 @@ public class GeneticAlgorithm
                 population = GenerateCellularAutomataLevels(population, startingStateCollection);   
                 population = FitnessFunction.scoreLevels(population);   
                 Array.Sort(population);
+                
+                if (generations==0)
+                {
+                    
+                    saveArray.printArray(population[0].getRules(), "firstCA");
+                    for (var i = 0; i < startingStateCollection.Length; i++)
+                    {
+                        saveArray.printArray(startingStateCollection[0],"SS"+i);    
+                    }
+                    
+                }
+
                 population = GenerateNewPop(population);
                 currFittest = (int) population[0].getFitness();
                 
@@ -50,11 +63,13 @@ public class GeneticAlgorithm
                 }
                 prevfitness = currFittest;
                 generations++;
-                float avg = 0;
+                
             }
-        }
+        } 
+        saveArray.printArray(population[0].getRules(), "BestCA");
         return population;
     }
+    
 
     private CellularAutomata[] GenerateCellularAutomataLevels(CellularAutomata[] population, int[][,] startingStateCollection) {
         for(int i=0; i<population.Length; i++)

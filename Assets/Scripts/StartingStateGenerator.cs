@@ -39,6 +39,7 @@ public static class StartingStateGenerator
     //generates a random number between 0..1(inclusive), if the number is below RandomChanceOn, returns true
     private static bool randomChanceOn()
     {
+        
         float rndNbr = Random.value;
         if (rndNbr<=chanceOfCellOn)
         {
