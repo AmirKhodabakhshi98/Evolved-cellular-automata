@@ -46,5 +46,5 @@ This project demonstrates an end-to-end approach to **evolving procedural game-g
 
 ## Authors
 
-**Amir Khodabakhshi**
-**Adel Sabanovic**
+<strong>Amir Khodabakhshi</strong><br>
+<strong>Adel Sabanovic</strong>
